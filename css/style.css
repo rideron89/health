@@ -1,0 +1,227 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
+/*** General styles ***/
+html, body {
+    background-image: url("./images/white_wall_bg.png");
+}
+
+html, body, input {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 10pt;
+}
+
+input[type=search]:focus {
+    outline: none;
+    border-color: #b0e973;
+    box-shadow: 0px 0px 8px #b0e973;
+}
+/*** End General styles ***/
+
+/*** Header background ***/
+#header {
+    width: 100%;
+    height: 150px;
+    background-image: url("./images/header_banner.png");
+    position: absolute;
+    top: 0;
+    z-index: 1;
+}
+/*** End Header background ***/
+
+#logo_icon {
+    width: 105px;
+    height: 100px;
+}
+
+#logo_text {
+    font-size: 32px;
+    font-weight: bold;
+    color: #37910f;
+    text-shadow: 0px 1px 0px #6fbf2b;
+}
+
+/*** All this bullshit just to get vertical alignment... ***/
+.header_outer {
+    height: 100px;
+    overflow: hidden;
+    display: table;
+    position: static;
+}
+
+.header_middle {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    position: static;
+}
+
+.header_inner {
+}
+/*** End vertical alignment for Header ***/
+
+/*** Navigation bar ***/
+#navbar {
+    list-style: none;
+    text-align: justify;
+}
+
+#navbar li {
+    display: inline;
+    float: left;
+    padding: 2px 5px 2px 5px;
+    margin: 0 5px 10px 0;
+}
+
+#navbar .stretch {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+}
+
+#navbar input[type=button] {
+    border: 0;
+    background-image: url("./images/nav_button_enabled.png");
+    width: 80px;
+    height: 32px;
+}
+
+#navbar input[type=button]:hover {
+    background-image: url("./images/nav_button_hover.png");
+}
+
+#navbar input[type=button]:active {
+    background-image: url("./images/nav_button_active.png");
+}
+/*** End Navigation bar ***/
+
+/*** User info box ***/
+#user_info {
+    text-align: right;
+    padding-right: 10px;
+    position: relative;
+    z-index: 3
+}
+
+#user_info_banner {
+    background-image: url("./images/user_info_banner.png");
+    width: inherit;
+    height: 175px;
+    position: absolute;
+    top:0;
+    z-index: 2;
+}
+/*** End User info box ***/
+
+/*** Sidebox ***/
+.sidebox {
+    padding-bottom: 6px;
+}
+
+.sidebox_header {
+    padding: 10px;
+    margin-bottom: 4px;
+    text-indent: 1.5em;
+    color: #555;
+    font-size: 12pt;
+    font-weight: bold;
+    text-shadow: 0px 1px 0px #fff;
+}
+
+.sidebox_subheader {
+    text-indent: 1.25em;
+    font-weight: bold;
+}
+
+.sidebox_label {
+    float:left;
+    font-style: italic;
+    color: #555;
+}
+.sidebox_value {
+    float: right;
+    color: #555;
+}
+/*** End Sidebox ***/
+
+/*** Search box ***/
+#search_box #search_bar {
+    text-align: center;
+}
+
+#search_box input[type=search] {
+    padding: 4px;
+    border: 1px solid #aaa;
+    border-radius: 6px;
+}
+
+.search_item {
+    margin: 6px;
+    padding: 4px;
+}
+/*** End Search box ***/
+
+/*** Summary box ***/
+.summary_item {
+    margin: 6px;
+    padding: 4px;
+}
+/*** End Summary box ***/
+
+/*** Graph ***/
+.graph_title {
+    margin: 10px 0;
+    text-align: center;
+}
+
+.graph {
+    background-image: url("./images/map.png");
+    width: 147px;
+    height: 82px;
+    margin: 0 auto;
+}
+/*** End Graph ***/
+
+/*** Content tabs ***/
+#content_tab_labels {
+    border-bottom: 1px solid #ccc;
+    padding: 7px 8px;
+}
+
+#content_tabs label {
+    background: #eee;
+    border: 1px solid #ccc;
+    border-bottom: 0;
+    border-radius: 2px;
+    padding: 10px;
+}
+
+#content_tabs label:hover {
+    background: #ddd;
+}
+
+#content_tabs label.active {
+    background: #fff;
+}
+/*** End Contant tabs ***/
+
+/*** Content ***/
+.content {
+    border-radius: 2px;
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.content.active {
+    display: block;
+}
+/*** End Content ***/
+
+/*** Footer ***/
+#footer {
+    background: #eee;
+    margin: 24px;
+    padding: 24px;
+    text-align: center;
+}
+/*** End Footer ***/

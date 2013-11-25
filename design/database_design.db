@@ -1,0 +1,60 @@
+DROP TABLE IF EXISTS food_item;
+DROP TABLE IF EXISTS food_log;
+DROP TABLE IF EXISTS weight_log;
+DROP TABLE IF EXISTS exercise_log;
+DROP TABLE IF EXISTS user CASCADE;
+
+CREATE TABLE user (
+	id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	first_name VARCHAR(32),
+	last_name VARCHAR(32),
+	date_of_birth DATE,
+	date_joined DATETIME NOT NULL,
+	avatar VARCHAR(128),
+	username VARCHAR(32) NOT NULL UNIQUE,
+	password VARCHAR(32) NOT NULL
+);
+
+CREATE TABLE food_item (
+	id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	display_name VARCHAR(32) NOT NULL,
+	serving_size_count DOUBLE(5,2) DEFAULT 0.00,
+	serving_size_weight TINYINT DEFAULT 0,
+	calories INT UNSIGNED DEFAULT 0,
+	fat_calories INT UNSIGNED DEFAULT 0
+);
+
+CREATE TABLE food_log (
+	id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	user_id INT UNSIGNED NOT NULL,
+	food_ids_list VARCHAR(128),
+	calories INT UNSIGNED DEFAULT 0,
+	comment VARCHAR(256),
+	date_logged DATETIME NOT NULL,
+	FOREIGN KEY (user_id) REFERENCES user(id)
+);
+
+CREATE TABLE weight_log (
+	id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	user_id INT UNSIGNED NOT NULL,
+	weight INT UNSIGNED NOT NULL,
+	comment VARCHAR(256),
+	date_logged DATETIME NOT NULL,
+	FOREIGN KEY (user_id) REFERENCES user(id)
+);
+
+CREATE TABLE exercise_log (
+	id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	user_id INT UNSIGNED NOT NULL,
+	duration INT UNSIGNED DEFAULT 0,
+	type VARCHAR(128),
+	calories_lost INT UNSIGNED DEFAULT 0,
+	comment VARCHAR(256),
+	date_logged DATETIME NOT NULL,
+	FOREIGN KEY (user_id) REFERENCES user(id)
+);
+
+CREATE INDEX i_user_id ON user(id);
+CREATE INDEX i_food_log_user_id ON food_log(user_id);
+CREATE INDEX i_weight_log_user_id ON weight_log(user_id);
+CREATE INDEX i_exercise_log_user_id ON exercise_log(user_id);
