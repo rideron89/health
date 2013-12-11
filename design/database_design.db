@@ -9,8 +9,8 @@ CREATE TABLE user (
 	first_name VARCHAR(32),
 	last_name VARCHAR(32),
 	date_of_birth DATE,
-	date_joined DATETIME NOT NULL,
-	avatar VARCHAR(128),
+	date_joined TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	avatar VARCHAR(128) NOT NULL DEFAULT "",
 	username VARCHAR(32) NOT NULL UNIQUE,
 	password VARCHAR(32) NOT NULL,
 	email VARCHAR(32) NOT NULL UNIQUE,
@@ -34,7 +34,7 @@ CREATE TABLE food_log (
 	calories INT UNSIGNED DEFAULT 0,
 	comment VARCHAR(256),
 	date_logged DATETIME NOT NULL,
-	FOREIGN KEY (user_id) REFERENCES user(id)
+	FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
 );
 
 CREATE TABLE weight_log (
@@ -43,7 +43,7 @@ CREATE TABLE weight_log (
 	weight INT UNSIGNED NOT NULL,
 	comment VARCHAR(256),
 	date_logged DATETIME NOT NULL,
-	FOREIGN KEY (user_id) REFERENCES user(id)
+	FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
 );
 
 CREATE TABLE exercise_log (
@@ -54,7 +54,7 @@ CREATE TABLE exercise_log (
 	calories_lost INT UNSIGNED DEFAULT 0,
 	comment VARCHAR(256),
 	date_logged DATETIME NOT NULL,
-	FOREIGN KEY (user_id) REFERENCES user(id)
+	FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
 );
 
 CREATE INDEX i_user_id ON user(id);

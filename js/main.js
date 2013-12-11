@@ -84,14 +84,21 @@ function validate_new_user() {
     }
 
     if (verified === true) {
-        var data = {"user": user, "pass": pass, "email": email, "first_name": first_name, "last_name": last_name, "dob": dob};
+        var user_data = {
+            "user": user,
+            "pass": pass,
+            "email": email,
+            "first_name": first_name,
+            "last_name": last_name,
+            "dob": dob
+        };
 
         $(box_elem).children(".info_message").html("Creating account...");
 
         $.ajax({
-            type: "POST",
-            url: "php/account.php",
-            data: $.extend({"method": "create_account"}, data),
+            type:"POST",
+            url: "php/account.php?method=create_account",
+            data: user_data,
             success: function(data, status, xhr) {
                 try {
                     data = $.parseJSON(data);
@@ -100,7 +107,7 @@ function validate_new_user() {
                 }
 
                 if (data.error === true) {
-                    $(box_elem).children(".info_message").html("Error: " + data.response);
+                    $(box_elem).children(".info_message").html(data.response);
                 } else {
                     $(box_elem).children(".info_message").html("Account created!");
                 }
@@ -114,9 +121,91 @@ function validate_new_user() {
     }
 }
 
+function validate_login() {
+    var box_elem = $("#login_box");
+    var user = $(box_elem).children(".user").val();
+    var pass = $(box_elem).children(".pass").val();
+
+    if (user === "") {
+        $(box_elem).children(".user").addClass("error");
+        $(box_elem).children(".info_message").html("Username is empty.");
+        return false;
+    } else {
+        $(box_elem).children(".user").removeClass("error");
+    }
+
+    if (pass === "") {
+        $(box_elem).children(".pass").addClass("error");
+        $(box_elem).children(".info_message").html("Password is empty");
+        return false;
+    } else {
+        $(box_elem).children(".pass").removeClass("error");
+    }
+
+    var user_data = {"user": user, "pass": pass};
+
+    $(box_elem).children(".info_message").html("Logging in...");
+
+    $.ajax({
+        type: "POST",
+        url: "php/account.php?method=login",
+        data: user_data,
+        success: function(data, status, xhr) {
+            try {
+                data = $.parseJSON(data);
+            } catch (e) {
+                data = {"error": true, "response": data};
+            }
+
+            if (data.error === true) {
+                $(box_elem).children(".info_message").html(data.response);
+            } else {
+                console.log(data);
+                $(box_elem).children(".info_message").html("Logged in!");
+            }
+        },
+        error: function(xhr, status, errorThrown) {
+            console.log(errorThrown);
+        },
+        complete: function(xhr, status) {
+        }
+    });
+    return false;
+
+    $.ajax({
+        type: "POST",
+        url: "php/account.php",
+        data: $.extend({"method": "login"}, data),
+        success: function(data, status, xhr) {
+            try {
+                data = $.parseJSON(data);
+            } catch (e) {
+                data = {"error": true, "response": data};
+            }
+
+            if (data.error === true) {
+                $(box_elem).children(".info_message").html(data.response);
+            } else {
+                console.log(data);
+                $(box_elem).children(".info_message").html("Logged in!");
+            }
+        },
+        error: function(xhr, status, errorThrown) {
+            console.log(errorThrown);
+        },
+        complete: function(xhr, status) {
+        }
+    });
+}
+
 $(document).ready(function() {
     $("#create_account_box input[type=button].submit").click(function(e) {
         e.preventDefault();
         validate_new_user();
+    });
+
+    $("#login_box input[type=button].submit").click(function(e) {
+        e.preventDefault();
+        validate_login();
     });
 })

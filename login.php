@@ -28,12 +28,13 @@
         <div class="info_message"></div>
         <input type="button" class="submit" value="Create Account" />
     </div>
-    <div class="grid_4">
+    <div class="grid_4" id="login_box">
         <h2>Login</h2>
-        <input type="text" placeholder="username" /><br />
-        <input type="pass" placeholder="password" /><br />
+        <input type="text" class="user" placeholder="username" /><br />
+        <input type="pass" class="pass" placeholder="password" /><br />
         <br />
-        <input type="button" value="Login" />
+        <div class="info_message"></div>
+        <input type="button" class="submit" value="Login" />
     </div>
     <div class="grid_2">&nbsp;</div>
 
