@@ -12,7 +12,9 @@ CREATE TABLE user (
 	date_joined DATETIME NOT NULL,
 	avatar VARCHAR(128),
 	username VARCHAR(32) NOT NULL UNIQUE,
-	password VARCHAR(32) NOT NULL
+	password VARCHAR(32) NOT NULL,
+	email VARCHAR(32) NOT NULL UNIQUE,
+	activated TINYINT DEFAULT 0
 );
 
 CREATE TABLE food_item (
@@ -21,7 +23,8 @@ CREATE TABLE food_item (
 	serving_size_count DOUBLE(5,2) DEFAULT 0.00,
 	serving_size_weight TINYINT DEFAULT 0,
 	calories INT UNSIGNED DEFAULT 0,
-	fat_calories INT UNSIGNED DEFAULT 0
+	fat_calories INT UNSIGNED DEFAULT 0,
+	protein INT UNSIGNED DEFAULT 0
 );
 
 CREATE TABLE food_log (

@@ -6,8 +6,12 @@ html, body {
 }
 
 html, body, input {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 10pt;
+    font-family: 'Verdana', 'Open Sans', sans-serif;
+    font-size: 9pt;
+}
+
+input[type=text], input[type=pass] {
+    width: 100;
 }
 
 input[type=search]:focus {
@@ -34,7 +38,7 @@ input[type=search]:focus {
 }
 
 #logo_text {
-    font-size: 32px;
+    font-size: 28px;
     font-weight: bold;
     color: #37910f;
     text-shadow: 0px 1px 0px #6fbf2b;
@@ -99,7 +103,8 @@ input[type=search]:focus {
     text-align: right;
     padding-right: 10px;
     position: relative;
-    z-index: 3
+    z-index: 3;
+    color: #eee;
 }
 
 #user_info_banner {
@@ -225,3 +230,9 @@ input[type=search]:focus {
     text-align: center;
 }
 /*** End Footer ***/
+
+/*** Login Page ***/
+input.error {
+    box-shadow: 0px 0px 8px red;
+}
+/*** End Login Page ***/
