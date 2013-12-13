@@ -61,7 +61,7 @@ function validate_new_user() {
 
 
     // check for valid passwords
-    if (pass.match(/[^a-z]/g) !== null) {
+    if (pass.match(/[^a-zA-Z-0-9_]/g) !== null) {
         $(box_elem).children(".pass, .pass_confirm").addClass("error");
         $(box_elem).children(".info_message").html("Password has invalid characters.");
         return false;

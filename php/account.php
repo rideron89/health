@@ -116,6 +116,13 @@ if ($_GET["method"] === "login") {
     if (gettype($result) === "array") {
         $error = False;
         $response = json_encode($result);
+
+        // add login credentials to the session
+        session_start();
+        $_SESSION["username"] = $result["username"];
+        $_SESSION["password"] = $result["password"];
+        $_SESSION["first_name"] = $result["first_name"];
+        $_SESSION["last_name"] = $result["last_name"];
     } else {
         $error = True;
         $response = $result;

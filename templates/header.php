@@ -29,13 +29,19 @@
             <div id="user_info_banner">&nbsp;</div>
             <div class="header_middle">
                 <div id="user_info" class="header_inner">
-                    <a href="login.php">Create Account / Login</a>
+<?php
+    if ($LOGGED_IN === FALSE) {
+?>                  <a href="login.php">Create Account / Login</a>
+<?php
+    } else {
+?>
+                    Welcome <i><?php echo $USERNAME; ?></i>!<br />
+                    9999 eaten/day | 999 lost/day<br />
+                    <a href="logout.php">Logout</a>
+<?php
+    }
+?>
                 </div>
-                <!--<div id="user_info" class="header_inner">
-                    Welcome <i>abcdefghijklmnop12345</i><br />
-                    9999 eaten/day | 999 lost/day <br />
-                    Logout
-                </div>-->
             </div>
         </div>
         <div class="clear"></div>
