@@ -231,6 +231,17 @@ input[type=search]:focus {
 }
 /*** End Footer ***/
 
+/*** Home Page ***/
+#home_create_account_div {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#home_create_account_div #anon_create_account_link {
+    font-size: 26px;
+}
+/*** End Home Page ***/
+
 /*** Login Page ***/
 input.error {
     box-shadow: 0px 0px 8px red;
