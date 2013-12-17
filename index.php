@@ -44,7 +44,10 @@
     <!-- /header -->
 
     <!-- content -->
-<?php if ($LOGGED_IN === FALSE) include("templates/anon_home.php"); ?>
+<?php
+    if ($LOGGED_IN === FALSE) include("templates/anon_home.php");
+    else include("templates/user_home.php");
+?>
     <!-- /content -->
 
     <!-- footer -->
