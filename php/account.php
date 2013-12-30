@@ -88,12 +88,12 @@ function login($data) {
 
 // exit with an error if no method request was given
 if (!isset($_GET) || !isset($_GET["method"])) {
-    echo json_encode(array("error" => True, "response" => "No method request received"));
+    echo json_encode(array("error" => TRUE, "response" => "No method request received"));
     die();
 }
 
 $result = NULL;
-$error = True;
+$error = TRUE;
 $response = "No method performed";
 
 // request to create a new account
@@ -104,7 +104,7 @@ if ($_GET["method"] === "create_account") {
         $error = False;
         $response = "success";
     } else {
-        $error = True;
+        $error = TRUE;
         $response = $result;
     }
 }
@@ -124,7 +124,7 @@ if ($_GET["method"] === "login") {
         $_SESSION["first_name"] = $result["first_name"];
         $_SESSION["last_name"] = $result["last_name"];
     } else {
-        $error = True;
+        $error = TRUE;
         $response = $result;
     }
 }

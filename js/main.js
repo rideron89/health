@@ -162,6 +162,7 @@ function validate_login() {
             } else {
                 console.log(data);
                 $(box_elem).children(".info_message").html("Logged in!");
+                window.location.href = "/";
             }
         },
         error: function(xhr, status, errorThrown) {

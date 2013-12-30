@@ -13,7 +13,12 @@
             $sql = "SELECT * FROM user WHERE username=? AND password=?";
             $sth = $dbh->prepare($sql);
             $success = $sth->execute(array($_SESSION["username"], $_SESSION["password"]));
-            if ($success === FALSE) $LOGGED_IN = FALSE;
+
+            if ($success === FALSE) {
+                $LOGGED_IN = FALSE;
+                $USERNAME = "";
+                $PASSWORD = "";
+            }
 
             $row = $sth->fetch(PDO::FETCH_ASSOC);
             if ($row !== False) {
@@ -31,12 +36,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
     <title>Health Log</title>
     <link rel="stylesheet" href="vendor/960/960.css" />
     <link rel="stylesheet" href="vendor/960/960_12_col.css" />
     <link rel="stylesheet" href="vendor/960/reset.css" />
     <link rel="stylesheet" href="vendor/960/text.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <script type="text/javascript">
+        var USERNAME = "<?php echo $USERNAME; ?>";
+        var PASSWORD = "<?php echo $PASSWORD; ?>";
+    </script>
 </head>
 <body>
     <!-- header -->

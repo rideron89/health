@@ -11,7 +11,7 @@ html, body, input {
 }
 
 input[type=text], input[type=pass] {
-    width: 100;
+    width: 100px;
 }
 
 input[type=search]:focus {
@@ -78,8 +78,8 @@ input[type=search]:focus {
 
 #navbar .stretch {
     display: inline-block;
-    *display: inline;
-    zoom: 1;
+    *display: inline; /* freaking IE hacks... */
+    /*zoom: 1;*/ /* why was this here? and taken out? */
 }
 
 #navbar input[type=button] {

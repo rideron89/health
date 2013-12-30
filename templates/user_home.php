@@ -1,21 +1,21 @@
         <div class="grid_3">
             <div id="summary_box" class="sidebox">
                 <div class="sidebox_header">Your Summary</div>
-                <div class="summary_item">
+                <div id="diet_summary" class="summary_item">
                     <div class="sidebox_subheader">Diet Info</div>
                     <div class="sidebox_label">Total</div>
-                    <div class="sidebox_value">73,645 cals</div><br />
+                    <div class="sidebox_value total">73,645 cals</div><br />
                     <div class="sidebox_label">Monthly Quota</div>
-                    <div class="sidebox_value">10,000 cals</div><br />
+                    <div class="sidebox_value monthly_quota">10,000 cals</div><br />
                     <div class="sidebox_label">This Month</div>
-                    <div class="sidebox_value">7,455 cals</div><br />
+                    <div class="sidebox_value monthly_total">7,455 cals</div><br />
                     <div class="sidebox_label">Calories To Quota</div>
-                    <div class="sidebox_value">2,545 cals</div><br />
+                    <div class="sidebox_value calories_to_quota">2,545 cals</div><br />
 
                     <div class="graph_title">7-Day Graph</div>
                     <div id="diet_graph" class="graph"></div>
                 </div>
-                <div class="summary_item">
+                <div id="exercise_summary" class="summary_item">
                     <div class="sidebox_subheader">Exercise Info</div>
                     <div class="sidebox_label">Total</div>
                     <div class="sidebox_value">64,830 cals</div><br />

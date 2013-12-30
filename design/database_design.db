@@ -14,7 +14,8 @@ CREATE TABLE user (
 	username VARCHAR(32) NOT NULL UNIQUE,
 	password VARCHAR(32) NOT NULL,
 	email VARCHAR(32) NOT NULL UNIQUE,
-	activated TINYINT DEFAULT 0
+	activated TINYINT DEFAULT 0,
+        monthly_calorie_in_quota INT UNSIGNED DEFAULT 0
 );
 
 CREATE TABLE food_item (
