@@ -15,8 +15,8 @@ CREATE TABLE user (
 	password VARCHAR(32) NOT NULL,
 	email VARCHAR(32) NOT NULL UNIQUE,
 	activated TINYINT DEFAULT 0,
-        monthly_calorie_in_quota INT UNSIGNED DEFAULT 0,
-        monthly_calorie_out_quota INT UNSIGNED DEFAULT 0
+        monthly_diet_quota INT UNSIGNED DEFAULT 0,
+        monthly_exercise_quota INT UNSIGNED DEFAULT 0
 );
 
 CREATE TABLE food_item (
@@ -53,7 +53,7 @@ CREATE TABLE exercise_log (
 	user_id INT UNSIGNED NOT NULL,
 	duration INT UNSIGNED DEFAULT 0,
 	type VARCHAR(128),
-	calories_lost INT UNSIGNED DEFAULT 0,
+	calories INT UNSIGNED DEFAULT 0,
 	comment VARCHAR(256),
 	date_logged TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
@@ -64,4 +64,10 @@ CREATE INDEX i_food_log_user_id ON food_log(user_id);
 CREATE INDEX i_weight_log_user_id ON weight_log(user_id);
 CREATE INDEX i_exercise_log_user_id ON exercise_log(user_id);
 
-INSERT INTO user VALUES(NULL, "Ron", "Rider", "01-23-1989", NULL, "", "rideron89", "N64vto2g", "rideron89@gmail.com", 0, 75000);
+INSERT INTO user VALUES(NULL, "Ron", "Rider", "01-23-1989", NULL, "", "rideron89", "N64vto2g", "rideron89@gmail.com", 0, 75000, 75000);
+INSERT INTO food_log VALUES(NULL, 1, "", 280, "first test entry", NULL);
+INSERT INTO food_log VALUES(NULL, 1, "", 570, "second test entry", NULL);
+INSERT INTO food_log VALUES(NULL, 1, "", 350, "third test entry", "1970-01-01 00:00:01");
+INSERT INTO exercise_log VALUES(NULL, 1, 30, "", 120, "first test entry", NULL);
+INSERT INTO exercise_log VALUES(NULL, 1, 45, "", 210, "second test entry", NULL);
+INSERT INTO exercise_log VALUES(NULL, 1, 60, "", 315, "third test entry", "1970-01-01 00:00:01");

@@ -146,6 +146,10 @@ input[type=search]:focus {
     float: right;
     color: #555;
 }
+
+.sidebox_pace {
+    text-align: right;
+}
 /*** End Sidebox ***/
 
 /*** Search box ***/

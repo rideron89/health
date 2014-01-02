@@ -4,22 +4,23 @@ function get_user_diet_summary($username) {
     $diet = array(
         "total" => 0, "monthly_quota" => 0, "monthly_total" => 0);
     $exercise = array(
-        "total" => 30000, "monthly_quota" => 8000, "monthly_total" => 4600);
+        "total" => 0, "monthly_quota" => 0, "monthly_total" => 0);
 
     try {
         $dbh = new PDO("mysql:dbname=health;host=127.0.0.1", "root", "bob");
 
         // retrieve user id and calorie intake quota
-        $sql = "SELECT id,monthly_calorie_in_quota FROM user WHERE username=?";
+        $sql = "SELECT id,monthly_diet_quota,monthly_exercise_quota FROM user WHERE username=?";
         $sth = $dbh->prepare($sql);
         $success = $sth->execute(array($username));
-        $row = $sth->fetch();
-        $diet["monthly_quota"] = $row["monthly_calorie_in_quota"];
+        $user_row = $sth->fetch();
+        $diet["monthly_quota"] = $user_row["monthly_diet_quota"];
+        $exercise["monthly_quota"] = $user_row["monthly_exercise_quota"];
 
         // retrieve calorie intake for the current month
         $sql = "SELECT calories,date_logged FROM food_log WHERE user_id=?";
         $sth = $dbh->prepare($sql);
-        $success = $sth->execute(array($row["id"]));
+        $success = $sth->execute(array($user_row["id"]));
         foreach ($sth->fetchAll() as $row) {
             $diet["total"] += $row["calories"];
 
@@ -28,6 +29,20 @@ function get_user_diet_summary($username) {
             if (intval(date("Y")) === intval($entry_date_split[0]) &&
                 intval(date("m")) === intval($entry_date_split[1])) {
                 $diet["monthly_total"] += $row["calories"];
+            }
+        }
+
+        $sql = "SELECT calories,date_logged FROM exercise_log WHERE user_id=?";
+        $sth = $dbh->prepare($sql);
+        $success = $sth->execute(array($user_row["id"]));
+        foreach ($sth->fetchAll() as $row) {
+            $exercise["total"] += $row["calories"];
+
+            // record only thos month's calorie count here
+            $entry_date_split = explode("-", $row["date_logged"]);
+            if (intval(date("Y")) === intval($entry_date_split[0]) &&
+                intval(date("m")) === intval($entry_date_split[1])) {
+                $exercise["monthly_total"] += $row["calories"];
             }
         }
     } catch (PDOException $e) {

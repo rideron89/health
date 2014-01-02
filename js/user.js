@@ -16,6 +16,7 @@ function load_diet_summary(username) {
                 console.log(data.response);
             } else {
                 var diet_box = $("#summary_box #diet_summary");
+                var exercise_box = $("#summary_box #exercise_summary");
                 var all = $.parseJSON(data.response);
                 var diet_info = $.parseJSON(all.diet);
                 var exercise_info = $.parseJSON(all.exercise);
@@ -26,6 +27,11 @@ function load_diet_summary(username) {
                 $(".monthly_quota", diet_box).html(diet_info.monthly_quota + " cals");
                 $(".monthly_total", diet_box).html(diet_info.monthly_total + " cals");
                 $(".calories_to_quota", diet_box).html(diet_to_go + " cals");
+
+                $(".total", exercise_box).html(exercise_info.total + " cals");
+                $(".monthly_quota", exercise_box).html(exercise_info.monthly_quota + " cals");
+                $(".monthly_total", exercise_box).html(exercise_info.monthly_total + " cals");
+                $(".calories_to_quota", exercise_box).html(exercise_to_go + " cals");
             }
         },
         error: function(xhr, status, errorThrown) {
