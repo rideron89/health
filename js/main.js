@@ -160,7 +160,6 @@ function validate_login() {
             if (data.error === true) {
                 $(box_elem).children(".info_message").html(data.response);
             } else {
-                console.log(data);
                 $(box_elem).children(".info_message").html("Logged in!");
                 window.location.href = "/";
             }

@@ -15,7 +15,8 @@ CREATE TABLE user (
 	password VARCHAR(32) NOT NULL,
 	email VARCHAR(32) NOT NULL UNIQUE,
 	activated TINYINT DEFAULT 0,
-        monthly_calorie_in_quota INT UNSIGNED DEFAULT 0
+        monthly_calorie_in_quota INT UNSIGNED DEFAULT 0,
+        monthly_calorie_out_quota INT UNSIGNED DEFAULT 0
 );
 
 CREATE TABLE food_item (
@@ -34,7 +35,7 @@ CREATE TABLE food_log (
 	food_ids_list VARCHAR(128),
 	calories INT UNSIGNED DEFAULT 0,
 	comment VARCHAR(256),
-	date_logged DATETIME NOT NULL,
+	date_logged TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
 );
 
@@ -43,7 +44,7 @@ CREATE TABLE weight_log (
 	user_id INT UNSIGNED NOT NULL,
 	weight INT UNSIGNED NOT NULL,
 	comment VARCHAR(256),
-	date_logged DATETIME NOT NULL,
+	date_logged TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
 );
 
@@ -54,7 +55,7 @@ CREATE TABLE exercise_log (
 	type VARCHAR(128),
 	calories_lost INT UNSIGNED DEFAULT 0,
 	comment VARCHAR(256),
-	date_logged DATETIME NOT NULL,
+	date_logged TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
 );
 
@@ -62,3 +63,5 @@ CREATE INDEX i_user_id ON user(id);
 CREATE INDEX i_food_log_user_id ON food_log(user_id);
 CREATE INDEX i_weight_log_user_id ON weight_log(user_id);
 CREATE INDEX i_exercise_log_user_id ON exercise_log(user_id);
+
+INSERT INTO user VALUES(NULL, "Ron", "Rider", "01-23-1989", NULL, "", "rideron89", "N64vto2g", "rideron89@gmail.com", 0, 75000);
