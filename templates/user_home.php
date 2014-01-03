@@ -44,6 +44,10 @@
                     <label id="content_tab_4" class="" for="content_4">Tab Four</label>
                 </div>
                 <div id="content_1" class="content active">
+                    Below is a list of entries describing how many calories you ate/drink at a
+                    given time. Wouldn't it be nice to sort this stuff by day, month or year???
+                </div>
+                <div id="content_1.5" class="content">
                     Phasellus volutpat porttitor mauris. Etiam ut lacus lacus. Sed facilisis
                     auctor nisi. Proin varius odio ut sapien euismod convallis. Morbi consequat
                     urna nec metus rhoncus ultrices. Etiam interdum magna vitae est tincidunt

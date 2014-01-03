@@ -1,5 +1,46 @@
-// load diet summary information for use in
-// left sidebar
+function load_latest_diet_entries(username) {
+    $.ajax({
+        type: "POST",
+        url: "php/user.php?method=get_latest_diet_entries",
+        data: {username: username},
+        success: function(data, status, xhr) {
+            try {
+                data = $.parseJSON(data);
+            } catch (e) {
+                data = {"error": true, "response": data};
+            }
+
+            if (data.error === true) {
+                console.log(data.response);
+            } else {
+                var tabs_div = $("#content_tabs");
+                var entries = $.parseJSON(data.response);
+                var entry = null;
+                var content = "";
+                var entry_div = null;
+
+                for (var i = 0; i < entries.length; i++) {
+                    entry = $.parseJSON(entries[i]);
+                    entry_div = document.createElement("DIV");
+
+                    content = "<div class=\"calories\">" + entry.calories + " calories</div>"
+                            + "<div class=\"comment\">" + entry.comment + "</div>"
+                            + "<div class=\"date\">" + entry.date_logged + "</div>";
+
+                    $(entry_div).html(content).addClass("diet_entry");
+                    $(tabs_div).append(entry_div);
+                }
+            }
+        },
+        error: function(xhr, status, errorThrown) {
+            console.log(errorThrown);
+        },
+        complete: function(xhr, status) {
+        }
+    });
+}
+
+// load diet summary information for use in left sidebar
 function load_diet_summary(username) {
     $.ajax({
         type: "POST",
@@ -43,5 +84,8 @@ function load_diet_summary(username) {
 }
 
 $(document).ready(function() {
-    load_diet_summary(USERNAME);
+    if (USERNAME !== "") {
+        load_diet_summary(USERNAME);
+        load_latest_diet_entries(USERNAME);
+    }
 });

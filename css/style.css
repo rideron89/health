@@ -226,6 +226,36 @@ input[type=search]:focus {
 }
 /*** End Content ***/
 
+/*** Diet Entries ***/
+.diet_entry {
+    position: relative;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0px;
+}
+
+.diet_entry:hover {
+    border-color: #b0e973;
+    box-shadow: 0px 0px 8px #b0e973;
+}
+
+.diet_entry .calories {
+    font-size: 24px;
+    font-weight: bold;
+    color: #8DBA5C;
+}
+
+.diet_entry .comment {
+    text-indent: 20px;
+}
+
+.diet_entry .date {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+/*** End Diet Entries ***/
+
 /*** Footer ***/
 #footer {
     background: #eee;

@@ -54,6 +54,29 @@ function get_user_diet_summary($username) {
     return array("diet" => json_encode($diet), "exercise" => json_encode($exercise));
 }
 
+function get_latest_diet_entries($username, $limit = 5) {
+    $entries = array();
+
+    try {
+        $limit_filtered = filter_var($limit, FILTER_SANITIZE_NUMBER_INT, array("default" => 5));
+
+        $dbh = new PDO("mysql:dbname=health;host=127.0.0.1", "root", "bob");
+
+        $sql = "SELECT * FROM food_log WHERE user_id=1 ORDER BY date_logged DESC LIMIT " . $limit_filtered;
+        $sth = $dbh->prepare($sql);
+        $success = $sth->execute();
+        foreach ($sth->fetchAll(PDO::FETCH_ASSOC) as $row) {
+            array_push($entries, json_encode($row));
+        }
+    } catch (PDOException $e) {
+        return "Database error: " . $e->getMessage();
+    } catch (Exception $e) {
+        return "Error: " . $e->getMessage();
+    }
+
+    return $entries;
+}
+
 $result = NULL;
 $error = TRUE;
 $response = "No method performed";
@@ -64,6 +87,22 @@ if (isset($_GET["method"]) && $_GET["method"] === "get_user_diet_summary") {
         $result = "No username supplied!";
     } else {
         $result = get_user_diet_summary($_POST["username"]);
+    }
+
+    if (gettype($result) === "string") {
+        $error = TRUE;
+        $response = $result;
+    } else {
+        $error = FALSE;
+        $response = json_encode($result);
+    }
+}
+
+if (isset($_GET["method"]) && $_GET["method"] === "get_latest_diet_entries") {
+    if (!isset($_POST["username"]) || $_POST["username"] === "") {
+        $result = "No username supplied!";
+    } else {
+        $result = get_latest_diet_entries($_POST["username"]);
     }
 
     if (gettype($result) === "string") {
