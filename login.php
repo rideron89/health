@@ -61,11 +61,11 @@
     </div>
     <div class="grid_4" id="login_box">
         <h2>Login</h2>
-        <input type="text" class="user" placeholder="username" /><br />
-        <input type="password" class="pass" placeholder="password" /><br />
+        <input type="text" class="user" tabindex=1 placeholder="username" /><br />
+        <input type="password" class="pass" tabindex=2 placeholder="password" /><br />
         <br />
         <div class="info_message"></div>
-        <input type="button" class="submit" value="Login" />
+        <input type="button" class="submit" tabindex=3 value="Login" />
     </div>
     <div class="grid_2">&nbsp;</div>
 

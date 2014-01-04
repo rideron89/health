@@ -208,4 +208,10 @@ $(document).ready(function() {
         e.preventDefault();
         validate_login();
     });
+
+    $("#login_box input").keypress(function(e) {
+        if (e.keyCode === 13) {
+            validate_login();
+        }
+    });
 })
