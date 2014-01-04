@@ -13,7 +13,7 @@ function load_latest_diet_entries(username) {
             if (data.error === true) {
                 console.log(data.response);
             } else {
-                var tabs_div = $("#content_tabs");
+                var content_div = $("#content_tabs #content_1");
                 var entries = $.parseJSON(data.response);
                 var entry = null;
                 var content = "";
@@ -28,7 +28,7 @@ function load_latest_diet_entries(username) {
                             + "<div class=\"date\">" + entry.date_logged + "</div>";
 
                     $(entry_div).html(content).addClass("diet_entry");
-                    $(tabs_div).append(entry_div);
+                    $(content_div).append(entry_div);
                 }
             }
         },

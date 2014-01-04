@@ -214,4 +214,22 @@ $(document).ready(function() {
             validate_login();
         }
     });
+
+    $("#content_tab_labels label").each(function() {
+        $(this).click(function(e) {
+            if ($(this).hasClass("active") === false) {
+                $("#content_tabs .content.active").each(function() {
+                    $(this).removeClass("active");
+                });
+
+                $("#content_tabs #" + $(this).attr("for")).addClass("active");
+
+                $("#content_tab_labels label.active").each(function() {
+                    $(this).removeClass("active");
+                });
+
+                $(this).addClass("active");
+            }
+        });
+    });
 })

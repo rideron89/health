@@ -56,8 +56,16 @@
 
     <!-- content -->
 <?php
-    if ($LOGGED_IN === FALSE) include("templates/anon_home.php");
-    else include("templates/user_home.php");
+    if ($LOGGED_IN === FALSE) {
+        include("templates/anon_home.php");
+    }
+    else {
+        include("templates/summary_sidebar.php");
+        echo "\n";
+        include("templates/user_home.php");
+        echo "\n";
+        include("templates/nutrition_sidebar.php");
+    }
 ?>
     <!-- /content -->
 
