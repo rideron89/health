@@ -13,7 +13,7 @@ function load_latest_diet_entries(username) {
             if (data.error === true) {
                 console.log(data.response);
             } else {
-                var content_div = $("#content_tabs #content_1");
+                var content_div = $("#content_tabs #diet_content");
                 var entries = $.parseJSON(data.response);
                 var entry = null;
                 var content = "";
@@ -55,7 +55,7 @@ function load_latest_exercise_entries(username) {
             if (data.error === true) {
                 console.log(data.response);
             } else {
-                var content_div = $("#content_tabs #content_2");
+                var content_div = $("#content_tabs #exercise_content");
                 var entries = $.parseJSON(data.response);
                 var entry = null;
                 var content = "";

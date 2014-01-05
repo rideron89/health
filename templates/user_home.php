@@ -1,16 +1,16 @@
         <div class="grid_6">
             <div id="content_tabs">
                 <div id="content_tab_labels">
-                    <label id="content_tab_1" class="active" for="content_1">Diet Entries</label>
-                    <label id="content_tab_2" class="" for="content_2">Exercise Entries</label>
+                    <label id="content_tab_1" class="active" for="diet_content">Diet Entries</label>
+                    <label id="content_tab_2" class="" for="exercise_content">Exercise Entries</label>
                     <label id="content_tab_3" class="" for="content_3">Tab Three</label>
                     <label id="content_tab_4" class="" for="content_4">Tab Four</label>
                 </div>
-                <div id="content_1" class="content active">
+                <div id="diet_content" class="content active">
                     Below is a list of entries describing how many calories you ate/drink at a
                     given time. Wouldn't it be nice to sort this stuff by day, month or year???
                 </div>
-                <div id="content_2" class="content">
+                <div id="exercise_content" class="content">
                     Below is a list of entries describing how many calories you burned at a
                     given time. Wouldn't it be nice to sort this stuff by day, month or year???
                 </div>
