@@ -226,35 +226,35 @@ input[type=search]:focus {
 }
 /*** End Content ***/
 
-/*** Diet Entries ***/
-.diet_entry {
+/*** Diet & Exercise Entries ***/
+.diet_entry, .exercise_entry {
     position: relative;
     border: 1px solid #ccc;
     padding: 10px;
     margin: 10px 0px;
 }
 
-.diet_entry:hover {
+.diet_entry:hover, .exercise_entry:hover {
     border-color: #b0e973;
     box-shadow: 0px 0px 8px #b0e973;
 }
 
-.diet_entry .calories {
+.diet_entry .calories, .exercise_entry .calories {
     font-size: 24px;
     font-weight: bold;
     color: #8DBA5C;
 }
 
-.diet_entry .comment {
+.diet_entry .comment, .exercise_entry .comment {
     text-indent: 20px;
 }
 
-.diet_entry .date {
+.diet_entry .date, .exercise_entry .date {
     position: absolute;
     top: 10px;
     right: 10px;
 }
-/*** End Diet Entries ***/
+/*** End Diet & Exercise Entries ***/
 
 /*** Footer ***/
 #footer {

@@ -77,9 +77,32 @@ function get_latest_diet_entries($username, $limit = 5) {
     return $entries;
 }
 
+function get_latest_exercise_entries($username, $limit = 5) {
+    $entries = array();
+
+    try {
+        $limit_filtered = filter_var($limit, FILTER_SANITIZE_NUMBER_INT, array("default" => 5));
+
+        $dbh = new PDO("mysql:dbname=health;host=127.0.0.1", "root", "bob");
+
+        $sql = "SELECT * FROM exercise_log WHERE user_id=1 ORDER BY date_logged DESC LIMIT " . $limit_filtered;
+        $sth = $dbh->prepare($sql);
+        $success = $sth->execute();
+        foreach ($sth->fetchAll(PDO::FETCH_ASSOC) as $row) {
+            array_push($entries, json_encode($row));
+        }
+    } catch (PDOException $e) {
+        return "Database error: " . $e->getMessage();
+    } catch (Exception $e) {
+        return "Error: " . $e->getMessage();
+    }
+
+    return $entries;
+}
+
 $result = NULL;
 $error = TRUE;
-$response = "No method performed";
+$response = "No valid method performed";
 
 // request to retrieve a user's diet summary info
 if (isset($_GET["method"]) && $_GET["method"] === "get_user_diet_summary") {
@@ -114,17 +137,19 @@ if (isset($_GET["method"]) && $_GET["method"] === "get_latest_diet_entries") {
     }
 }
 
-// DELETE THIS???
-// request to create a new account
-if (isset($_GET["method"]) && $_GET["method"] === "create_account") {
-    $result = create_account($_POST);
-
-    if ($result === 0) {
-        $error = False;
-        $response = "success";
+if (isset($_GET["method"]) && $_GET["method"] === "get_latest_exercise_entries") {
+    if (!isset($_POST["username"]) || $_POST["username"] === "") {
+        $result = "No username supplied!";
     } else {
-        $error = True;
+        $result = get_latest_exercise_entries($_POST["username"]);
+    }
+
+    if (gettype($result) === "string") {
+        $error = TRUE;
         $response = $result;
+    } else {
+        $error = FALSE;
+        $response = json_encode($result);
     }
 }
 
