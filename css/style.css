@@ -10,8 +10,34 @@ html, body, input {
     font-size: 9pt;
 }
 
-input[type=text], input[type=pass] {
-    width: 100px;
+input[type=text], input[type=password], input[type=date] {
+    border: 1px solid #aaa;
+    padding: 8px;
+}
+
+input[type=button] {
+    outline: none;
+    padding: 8px;
+    border: 1px solid #003D99;
+    background-color: #71A9FF;
+    box-shadow: 0px 1px 1px #3E76CC;
+    text-shadow: 0 1px 1px #555;
+    color: #fff;
+    font-weight: bold;
+}
+
+input[type=button]:hover, input[type=button]:focus {
+    background-color: #5A87CC;
+}
+
+input[type=button]:active {
+    background-color: #9CC3FF;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    outline: none;
+    border-color: #7BA350;
+    box-shadow: 0px 0px 8px #b0e973;
 }
 
 input[type=search]:focus {
@@ -83,8 +109,13 @@ input[type=search]:focus {
 }
 
 #navbar input[type=button] {
+    outline: none;
+    box-shadow: none;
+    background-color: green;
     border: 0;
     background-image: url("./images/nav_button_enabled.png");
+    color: #222;
+    text-shadow: 0px 1px 2px #aaa;
     width: 80px;
     height: 32px;
 }
@@ -279,5 +310,11 @@ input[type=search]:focus {
 /*** Login Page ***/
 input.error {
     box-shadow: 0px 0px 8px red;
+}
+
+#create_account_box > input[type=text], 
+#create_account_box > input[type=password],
+#create_account_box > input[type=date] {
+    width: 160px;
 }
 /*** End Login Page ***/

@@ -2,7 +2,7 @@
             <div id="search_box" class="sidebox">
                 <div class="sidebox_header">Find Nutrition Info</div>
                 <div id="search_bar">
-                    <input type="search" placeholder="Ex: banana" />
+                    <input type="text" placeholder="food item" />
                     <input type="button" value="Go!" />
                 </div>
                 <div class="search_item">
