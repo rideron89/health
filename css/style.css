@@ -95,6 +95,7 @@ input[type=search]:focus {
     text-align: justify;
     width: 100%;
     line-height: 100px;
+    height: 100px;
 }
 
 #navbar li {
