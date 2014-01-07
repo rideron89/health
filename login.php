@@ -44,7 +44,7 @@
 
     <div class="grid_2">&nbsp;</div>
     <div class="grid_4" id="create_account_box">
-        <h2>New Account</h2>
+        <h2>Need a free account?</h2>
         <input type="text" class="user" placeholder="username" /><br />
         <input type="password" class="pass" placeholder="password" /><br />
         <input type="password" class="pass_confirm" placeholder="confirm password" /><br />
@@ -60,7 +60,7 @@
         <input type="button" class="submit" value="Create Account" />
     </div>
     <div class="grid_4" id="login_box">
-        <h2>Login</h2>
+        <h2>Existing Users</h2>
         <input type="text" class="user" tabindex=1 placeholder="username" /><br />
         <input type="password" class="pass" tabindex=2 placeholder="password" /><br />
         <br />

@@ -16,10 +16,10 @@
             <div class="header_middle">
                 <div class="header_inner">
                     <ul id="navbar">
-                        <li><input type="button" value="Home" /></li>
-                        <li><input type="button" value="Diet" /></li>
-                        <li><input type="button" value="Exercise" /></li>
-                        <li><input type="button" value="Nutrition" /></li>
+                        <li><a href=".">Home</a></li>
+                        <li><a href="">Diet</a></li>
+                        <li><a href="">Exercise</a></li>
+                        <li><a href="">Nutrition</a></li>
                         <li class="stretch"></li>
                     </ul>
                 </div>

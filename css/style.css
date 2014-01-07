@@ -93,17 +93,34 @@ input[type=search]:focus {
 #navbar {
     list-style: none;
     text-align: justify;
+    width: 100%;
+    line-height: 100px;
 }
 
 #navbar li {
     display: inline;
-    float: left;
     padding: 2px 5px 2px 5px;
-    margin: 0 5px 10px 0;
+    margin: 0;
+    text-align: center;
+}
+
+#navbar li a {
+    border: 1px solid #336E12;
+    padding: 12px;
+    color: #404236;
+    box-shadow: 0 0 2px #3B9412;
+    text-shadow: 0 1px 0px #777;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#navbar li a:hover {
+    box-shadow: none;
 }
 
 #navbar .stretch {
     display: inline-block;
+    width: 100%;
     *display: inline; /* freaking IE hacks... */
     /*zoom: 1;*/ /* why was this here? and taken out? */
 }
