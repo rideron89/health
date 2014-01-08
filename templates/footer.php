@@ -6,6 +6,8 @@
 
     <script type="text/javascript" src="vendor/jquery-2.0.3.js"></script>
     <script type="text/javascript" src="vendor/angular.js"></script>
+    <script type="text/javascript" src="vendor/flot/jquery.flot.js"></script>
+    <script type="text/javascript" src="vendor/flot/jquery.flot.categories.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
 <?php if (isset($LOGGED_IN) && $LOGGED_IN) { ?>
     <script type="text/javascript" src="js/user.js"></script>

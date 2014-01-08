@@ -35,6 +35,45 @@ function display_exercise_entries() {
     });
 }
 
+function load_diet_tables(json) {
+    var options = {
+        series: {
+            lines: {show: true, fill: true, fillColor: "rgba(0, 0, 0, 0.8)" },
+            points: {show: true, fill: false}
+        }
+    };
+    var data = [[0,0], [0,1], [1,0], [1,1]];
+
+    $.plot($("#diet_placeholder"), data, options);
+}
+
+function create_diet_tables() {
+    var json = [];
+    var months = [];
+    var calories = [];
+    var month = "";
+
+    diet_data.map(function(value, index, arr) {
+        month = value.date_logged.slice(0, 7);
+        if (months.indexOf(month) === -1) {
+            months.push(month);
+            calories.push(0);
+        }
+
+        calories[months.indexOf(month)] += parseInt(value.calories);
+
+    });
+
+    months.map(function(value, index, arr) {
+        json.push({
+            month: value,
+            calories: calories[index]
+        });
+    });
+
+    load_diet_tables(json);
+}
+
 function load_diet_data(username) {
     $.ajax({
         type: "POST",
@@ -60,6 +99,7 @@ function load_diet_data(username) {
         },
         complete: function(xhr, status) {
             display_diet_entries();
+            create_diet_tables();
         }
     });
 }
