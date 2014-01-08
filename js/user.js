@@ -1,7 +1,44 @@
-function load_latest_diet_entries(username) {
+var diet_data = [];
+var exercise_data = [];
+
+function display_diet_entries() {
+    var content_div = $("#content_tabs #diet_content");
+    var content = "";
+    var entry_div = null;
+
+    diet_data.map(function(value, index, arr) {
+        entry_div = document.createElement("DIV");
+
+        content = "<div class=\"calories\">" + value.calories + " calories</div>"
+                + "<div class=\"comment\">" + value.comment + "</div>"
+                + "<div class=\"date\">" + value.date_logged + "</div>";
+
+        $(entry_div).html(content).addClass("diet_entry");
+        $(content_div).append(entry_div);
+    });
+}
+
+function display_exercise_entries() {
+    var content_div = $("#content_tabs #exercise_content");
+    var content = "";
+    var entry_div = null;
+
+    exercise_data.map(function(value, index, arr) {
+        entry_div = document.createElement("DIV");
+
+        content = "<div class=\"calories\">" + value.calories + " calories</div>"
+                + "<div class=\"comment\">" + value.comment + "</div>"
+                + "<div class=\"date\">" + value.date_logged + "</div>";
+
+        $(entry_div).html(content).addClass("exercise_entry");
+        $(content_div).append(entry_div);
+    });
+}
+
+function load_diet_data(username) {
     $.ajax({
         type: "POST",
-        url: "php/user.php?method=get_latest_diet_entries",
+        url: "php/user.php?method=get_diet_entries",
         data: {username: username},
         success: function(data, status, xhr) {
             try {
@@ -13,37 +50,24 @@ function load_latest_diet_entries(username) {
             if (data.error === true) {
                 console.log(data.response);
             } else {
-                var content_div = $("#content_tabs #diet_content");
-                var entries = $.parseJSON(data.response);
-                var entry = null;
-                var content = "";
-                var entry_div = null;
-
-                for (var i = 0; i < entries.length; i++) {
-                    entry = $.parseJSON(entries[i]);
-                    entry_div = document.createElement("DIV");
-
-                    content = "<div class=\"calories\">" + entry.calories + " calories</div>"
-                            + "<div class=\"comment\">" + entry.comment + "</div>"
-                            + "<div class=\"date\">" + entry.date_logged + "</div>";
-
-                    $(entry_div).html(content).addClass("diet_entry");
-                    $(content_div).append(entry_div);
-                }
+                $.parseJSON(data.response).map(function(value, index, arr) {
+                    diet_data.push($.parseJSON(value));
+                });
             }
         },
         error: function(xhr, status, errorThrown) {
             console.log(errorThrown);
         },
         complete: function(xhr, status) {
+            display_diet_entries();
         }
     });
 }
 
-function load_latest_exercise_entries(username) {
+function load_exercise_data(username) {
     $.ajax({
         type: "POST",
-        url: "php/user.php?method=get_latest_exercise_entries",
+        url: "php/user.php?method=get_exercise_entries",
         data: {username: username},
         success: function(data, status, xhr) {
             try {
@@ -55,29 +79,16 @@ function load_latest_exercise_entries(username) {
             if (data.error === true) {
                 console.log(data.response);
             } else {
-                var content_div = $("#content_tabs #exercise_content");
-                var entries = $.parseJSON(data.response);
-                var entry = null;
-                var content = "";
-                var entry_div = null;
-
-                for (var i = 0; i < entries.length; i++) {
-                    entry = $.parseJSON(entries[i]);
-                    entry_div = document.createElement("DIV");
-
-                    content = "<div class=\"calories\">" + entry.calories + " calories</div>"
-                            + "<div class=\"comment\">" + entry.comment + "</div>"
-                            + "<div class=\"date\">" + entry.date_logged + "</div>";
-
-                    $(entry_div).html(content).addClass("exercise_entry");
-                    $(content_div).append(entry_div);
-                }
+                $.parseJSON(data.response).map(function(value, index, arr) {
+                    exercise_data.push($.parseJSON(value));
+                });
             }
         },
         error: function(xhr, status, errorThrown) {
             console.log(errorThrown);
         },
         complete: function(xhr, status) {
+            display_exercise_entries();
         }
     });
 }
@@ -128,7 +139,8 @@ function load_diet_summary(username) {
 $(document).ready(function() {
     if (USERNAME !== "") {
         load_diet_summary(USERNAME);
-        load_latest_diet_entries(USERNAME);
-        load_latest_exercise_entries(USERNAME);
+
+        load_diet_data(USERNAME);
+        load_exercise_data(USERNAME);
     }
 });

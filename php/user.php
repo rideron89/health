@@ -54,15 +54,20 @@ function get_user_diet_summary($username) {
     return array("diet" => json_encode($diet), "exercise" => json_encode($exercise));
 }
 
-function get_latest_diet_entries($username, $limit = 5) {
+function get_diet_entries($username, $limit = 0) {
     $entries = array();
 
     try {
-        $limit_filtered = filter_var($limit, FILTER_SANITIZE_NUMBER_INT, array("default" => 5));
+        if ($limit == 0) {
+            $limit_filtered = "";
+        } else {
+            $limit_filtered = " LIMIT "
+                            . filter_var($limit, FILTER_SANITIZE_NUMBER_INT, array("default" => 5));
+        }
 
         $dbh = new PDO("mysql:dbname=health;host=127.0.0.1", "root", "bob");
 
-        $sql = "SELECT * FROM food_log WHERE user_id=1 ORDER BY date_logged DESC LIMIT " . $limit_filtered;
+        $sql = "SELECT * FROM food_log WHERE user_id=1 ORDER BY date_logged DESC" . $limit_filtered;
         $sth = $dbh->prepare($sql);
         $success = $sth->execute();
         foreach ($sth->fetchAll(PDO::FETCH_ASSOC) as $row) {
@@ -77,15 +82,20 @@ function get_latest_diet_entries($username, $limit = 5) {
     return $entries;
 }
 
-function get_latest_exercise_entries($username, $limit = 5) {
+function get_exercise_entries($username, $limit = 0) {
     $entries = array();
 
     try {
-        $limit_filtered = filter_var($limit, FILTER_SANITIZE_NUMBER_INT, array("default" => 5));
+        if ($limit == 0) {
+            $limit_filtered = "";
+        } else {
+            $limit_filtered = " LIMIT "
+                            . filter_var($limit, FILTER_SANITIZE_NUMBER_INT, array("default" => 5));
+        }
 
         $dbh = new PDO("mysql:dbname=health;host=127.0.0.1", "root", "bob");
 
-        $sql = "SELECT * FROM exercise_log WHERE user_id=1 ORDER BY date_logged DESC LIMIT " . $limit_filtered;
+        $sql = "SELECT * FROM exercise_log WHERE user_id=1 ORDER BY date_logged DESC" . $limit_filtered;
         $sth = $dbh->prepare($sql);
         $success = $sth->execute();
         foreach ($sth->fetchAll(PDO::FETCH_ASSOC) as $row) {
@@ -121,11 +131,11 @@ if (isset($_GET["method"]) && $_GET["method"] === "get_user_diet_summary") {
     }
 }
 
-if (isset($_GET["method"]) && $_GET["method"] === "get_latest_diet_entries") {
+if (isset($_GET["method"]) && $_GET["method"] === "get_diet_entries") {
     if (!isset($_POST["username"]) || $_POST["username"] === "") {
         $result = "No username supplied!";
     } else {
-        $result = get_latest_diet_entries($_POST["username"]);
+        $result = get_diet_entries($_POST["username"]);
     }
 
     if (gettype($result) === "string") {
@@ -137,11 +147,11 @@ if (isset($_GET["method"]) && $_GET["method"] === "get_latest_diet_entries") {
     }
 }
 
-if (isset($_GET["method"]) && $_GET["method"] === "get_latest_exercise_entries") {
+if (isset($_GET["method"]) && $_GET["method"] === "get_exercise_entries") {
     if (!isset($_POST["username"]) || $_POST["username"] === "") {
         $result = "No username supplied!";
     } else {
-        $result = get_latest_exercise_entries($_POST["username"]);
+        $result = get_exercise_entries($_POST["username"]);
     }
 
     if (gettype($result) === "string") {
