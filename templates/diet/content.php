@@ -7,6 +7,10 @@
                 <div class="info_message"></div>
             </div>
             <label>Last 25 Entries</label>
+            <label>
+                Here is a list of your last 25 diet entries. From this page you may hover over
+                any entry and delete if you wish.
+            </label>
             <div id="diet_entry_list">
             </div>
         </div>

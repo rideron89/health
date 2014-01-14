@@ -311,6 +311,33 @@ input[type=search]:focus {
     top: 10px;
     right: 10px;
 }
+
+.diet_entry .delete {
+    display: none;
+    text-align: right;
+}
+
+.diet_entry .delete input[type=button],
+.exercise_entry .delete input[type=button] {
+    border: 1px solid #E81100;
+    background-color: #FF6E63;
+    box-shadow: 0px 1px 1px #FF4A3C;
+    font-size: 10px;
+    padding: 6px;
+}
+
+.diet_entry .delete input[type=button]:hover,
+.diet_entry .delete input[type=button]:focus,
+.exercise_entry .delete input[type=button]:hover,
+.exercise_entry .delete input[type=button]:focus {
+    background-color: #E9524E;
+}
+
+.diet_entry .delete input[type=button]:active,
+.exercise_entry .delete input[type=button]:active {
+    background-color: #FF9295;
+}
+
 /*** End Diet & Exercise Entries ***/
 
 /*** Footer ***/

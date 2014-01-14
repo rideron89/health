@@ -42,6 +42,38 @@ function add_diet_entry($username, $password, $calories, $comment) {
     return 0;
 }
 
+function delete_diet_entry($username, $password, $id) {
+    try {
+        $id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
+
+        if ($id < 0) {
+            return "ID must be non-negative when removing an entry";
+        }
+
+        $dbh = new PDO("mysql:dbname=health;host=127.0.0.1", "root", "bob");
+
+        // retrieve user_id from database
+        $sql = "SELECT id FROM user WHERE username=? AND password=?";
+        $sth = $dbh->prepare($sql);
+        $success = $sth->execute(array($username, $password));
+        $user_row = $sth->fetch();
+
+        if ($user_row == FALSE) {
+            return "Invalid credentials.";
+        }
+
+        $sql = "DELETE FROM food_log WHERE user_id=? AND id=?";
+        $sth = $dbh->prepare($sql);
+        $success = $sth->execute(array($user_row["id"], $id));
+    } catch (PDOException $e) {
+        return "Database error: " . $e->getMessage();
+    } catch (Exception $e) {
+        return "Error: " . $e->getMessage();
+    }
+
+    return 0;
+}
+
 $result = NULL;
 $error = TRUE;
 $response = "No valid method performed";
@@ -59,6 +91,29 @@ if (isset($_GET["method"]) && $_GET["method"] === "add_diet_entry") {
         $calories = $_POST["calories"];
         $comment = (isset($_POST["comment"])) ? ($_POST["comment"]) : ("");
         $result = add_diet_entry($username, $password, $calories, $comment);
+    }
+
+    if (gettype($result) === "string") {
+        $error = TRUE;
+        $response = $result;
+    } else {
+        $error = FALSE;
+        $response = $result;
+    }
+}
+
+if (isset($_GET["method"]) && $_GET["method"] === "delete_diet_entry") {
+    if (isset($_POST["username"]) === FALSE) {
+        $result = "No username supplied!";
+    } else if (isset($_POST["password"]) === FALSE) {
+        $result = "No password supplied!";
+    } else if (isset($_POST["id"]) === FALSE) {
+        $result = "No ID value supplied!";
+    } else {
+        $username = $_POST["username"];
+        $password = $_POST["password"];
+        $id = $_POST["id"];
+        $result = delete_diet_entry($username, $password, $id);
     }
 
     if (gettype($result) === "string") {

@@ -1,5 +1,38 @@
 var diet_data = [];
 
+function delete_diet_entry(delete_elem) {
+    var id = $(delete_elem).children("input[type=button]").data("id");
+
+    $.ajax({
+        type: "POST",
+        url: "php/diet.php?method=delete_diet_entry",
+        data: {username: USERNAME, password: PASSWORD, id: id},
+        success: function(data, status, xhr) {
+            try {
+                data = $.parseJSON(data);
+            } catch (e) {
+                data = {"error": true, "response": data};
+            }
+
+            if (data.error === true) {
+                console.log(data.response);
+            } else {
+                $(delete_elem).parent(".diet_entry").hide(
+                    125,
+                    function() {
+                        $(delete_elem).parent(".diet_entry").remove();
+                    }
+                );
+            }
+        },
+        error: function(xhr, status, errorThrown) {
+            console.log(errorThrown);
+        },
+        complete: function(xhr, status) {
+        }
+    });
+}
+
 function display_diet_entries() {
     var content_div = $("#diet_entry_list");
     var content = "";
@@ -10,10 +43,28 @@ function display_diet_entries() {
 
         content = "<div class=\"calories\">" + value.calories + " calories</div>"
                 + "<div class=\"comment\">" + value.comment + "</div>"
-                + "<div class=\"date\">" + value.date_logged + "</div>";
+                + "<div class=\"date\">" + value.date_logged + "</div>"
+                + "<div class=\"delete\">"
+                + "<input type=\"button\" data-id=\"" + value.id + "\" value=\"Delete Entry\" />"
+                + "</div>";
 
         $(entry_div).html(content).addClass("diet_entry");
         $(content_div).append(entry_div);
+
+        $(entry_div).children(".delete").click(function(e) {
+            e.preventDefault();
+            delete_diet_entry($(this));
+        });
+        
+        // when this entry is hovered, toggle the delete button
+        $(entry_div).hover(
+            function(e) {
+                $(this).children(".delete").show(125);
+            },
+            function(e) {
+                $(this).children(".delete").hide(125);
+            }
+        );
     });
 }
 
