@@ -32,6 +32,10 @@
             $LOGGED_IN = FALSE;
         }
     }
+
+    if ($LOGGED_IN === FALSE) {
+        header("Location: ./login.php");
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -56,16 +60,11 @@
 
     <!-- content -->
 <?php
-    if ($LOGGED_IN === FALSE) {
-        include("templates/anon_home.php");
-    }
-    else {
-        include("templates/summary_sidebar.php");
-        echo "\n";
-        include("templates/user_home.php");
-        echo "\n";
-        include("templates/nutrition_sidebar.php");
-    }
+    include("templates/summary_sidebar.php");
+    echo "\n";
+    include("templates/diet/content.php");
+    echo "\n";
+    include("templates/nutrition_sidebar.php");
 ?>
     <!-- /content -->
 
@@ -74,7 +73,7 @@
     <!-- /footer -->
 
 <?php if (isset($LOGGED_IN) && $LOGGED_IN) { ?>
-    <script type="text/javascript" src="js/user.js"></script>
+    <script type="text/javascript" src="js/diet.js"></script>
 <?php } ?>
 </body>
 </html>

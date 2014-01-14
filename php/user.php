@@ -135,7 +135,11 @@ if (isset($_GET["method"]) && $_GET["method"] === "get_diet_entries") {
     if (!isset($_POST["username"]) || $_POST["username"] === "") {
         $result = "No username supplied!";
     } else {
-        $result = get_diet_entries($_POST["username"]);
+        if (isset($_POST["limit"]) === FALSE) {
+            $result = get_diet_entries($_POST["username"]);
+        } else {
+            $result = get_diet_entries($_POST["username"], $_POST["limit"]);
+        }
     }
 
     if (gettype($result) === "string") {
@@ -151,7 +155,11 @@ if (isset($_GET["method"]) && $_GET["method"] === "get_exercise_entries") {
     if (!isset($_POST["username"]) || $_POST["username"] === "") {
         $result = "No username supplied!";
     } else {
-        $result = get_exercise_entries($_POST["username"]);
+        if (isset($_POST["limit"]) === FALSE) {
+            $result = get_exercise_entries($_POST["username"]);
+        } else {
+            $result = get_exercise_entries($_POST["username"], $_POST["limit"]);
+        }
     }
 
     if (gettype($result) === "string") {
