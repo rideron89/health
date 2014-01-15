@@ -67,9 +67,15 @@ function get_diet_entries($username, $limit = 0) {
 
         $dbh = new PDO("mysql:dbname=health;host=127.0.0.1", "root", "bob");
 
-        $sql = "SELECT * FROM food_log WHERE user_id=1 ORDER BY date_logged DESC" . $limit_filtered;
+        // retrive user id
+        $sql = "SELECT id FROM user WHERE username=?";
         $sth = $dbh->prepare($sql);
-        $success = $sth->execute();
+        $success = $sth->execute(array($username));
+        $user_row = $sth->fetch();
+
+        $sql = "SELECT * FROM food_log WHERE user_id=? ORDER BY date_logged DESC" . $limit_filtered;
+        $sth = $dbh->prepare($sql);
+        $success = $sth->execute(array($user_row["id"]));
         foreach ($sth->fetchAll(PDO::FETCH_ASSOC) as $row) {
             array_push($entries, json_encode($row));
         }
@@ -95,9 +101,15 @@ function get_exercise_entries($username, $limit = 0) {
 
         $dbh = new PDO("mysql:dbname=health;host=127.0.0.1", "root", "bob");
 
-        $sql = "SELECT * FROM exercise_log WHERE user_id=1 ORDER BY date_logged DESC" . $limit_filtered;
+        // retrive user id
+        $sql = "SELECT id FROM user WHERE username=?";
         $sth = $dbh->prepare($sql);
-        $success = $sth->execute();
+        $success = $sth->execute(array($username));
+        $user_row = $sth->fetch();
+
+        $sql = "SELECT * FROM exercise_log WHERE user_id=? ORDER BY date_logged DESC" . $limit_filtered;
+        $sth = $dbh->prepare($sql);
+        $success = $sth->execute(array($user_row["id"]));
         foreach ($sth->fetchAll(PDO::FETCH_ASSOC) as $row) {
             array_push($entries, json_encode($row));
         }
