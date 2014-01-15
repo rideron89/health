@@ -16,6 +16,12 @@ function display_diet_entries() {
         $(entry_div).html(content).addClass("diet_entry");
         $(content_div).append(entry_div);
     });
+
+    if (diet_data.length < 1) {
+        content = "<h5>No Diet data found for you account! Go <a href=\"diet.php\">here</a>"
+                + " to add some entries!";
+        $(content_div).append(content);
+    }
 }
 
 function display_exercise_entries() {
@@ -33,6 +39,12 @@ function display_exercise_entries() {
         $(entry_div).html(content).addClass("exercise_entry");
         $(content_div).append(entry_div);
     });
+
+    if (exercise_data.length < 1) {
+        content = "<h5>No exercise data found for you account! Go <a href=\"exercise.php\">here</a>"
+                + " to add some entries!";
+        $(content_div).append(content);
+    }
 }
 
 function load_diet_tables(json) {
