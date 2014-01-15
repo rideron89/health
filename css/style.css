@@ -281,6 +281,12 @@ input[type=search]:focus {
 .content.active {
     display: block;
 }
+
+.placeholder {
+    width: 100%;
+    height: 300px;
+    border: 1px solid #ccc;
+}
 /*** End Content ***/
 
 /*** Diet & Exercise Entries ***/

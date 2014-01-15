@@ -62,7 +62,7 @@
     else {
         include("templates/summary_sidebar.php");
         echo "\n";
-        include("templates/user_home.php");
+        include("templates/home/user_home.php");
         echo "\n";
         include("templates/nutrition_sidebar.php");
     }
@@ -75,6 +75,7 @@
 
 <?php if (isset($LOGGED_IN) && $LOGGED_IN) { ?>
     <script type="text/javascript" src="js/user.js"></script>
+    <script type="text/javascript" src="js/summary.js"></script>
 <?php } ?>
 </body>
 </html>

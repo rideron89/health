@@ -1,5 +1,30 @@
-        <div class="grid_6">
-            <div id="content_tabs">
+        <div class="grid_6" id="user_home_content">
+            <label for="diet_tables">
+                These are some tables describing your <strong>diet</strong> tendencies.
+            </label>
+            <div id="diet_tables">
+                <div id="diet_placeholder" class="placeholder"></div>
+            </div>
+
+            <label for="exercise_tables">
+                These are some tables describing your <strong>exercise</strong> tendencies.
+            </label>
+            <div id="exercise_tables">
+                <div id="exercise_placeholder" class="placeholder"></div>
+            </div>
+
+            <label for="diet_entries">
+                This is a list of last 7 <strong>diet</strong> entries.
+            </label>
+            <div id="diet_entries">
+            </div>
+
+            <label for="exercise_entries">
+                This is a list of the last 7 <strong>exercise</strong> entries.
+            </label>
+            <div id="exercise_entries">
+            </div>
+            <!--<div id="content_tabs">
                 <div id="content_tab_labels">
                     <label id="content_tab_1" class="active" for="diet_content">Diet Entries</label>
                     <label id="content_tab_2" class="" for="exercise_content">Exercise Entries</label>
@@ -25,5 +50,5 @@
                     bibendum lobortis orci. Etiam at mi sed eros lobortis blandit ut ut leo.
                     Sed ultricies dui at sodales auctor.
                 </div>
-            </div>
+            </div>-->
         </div>

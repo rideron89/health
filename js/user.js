@@ -35,19 +35,25 @@ function display_exercise_entries() {
     });
 }
 
-function load_diet_tables(json) {
+function load_tables(type, json) {
     var options = {
         series: {
             lines: {show: true, fill: true, fillColor: "rgba(0, 0, 0, 0.8)" },
             points: {show: true, fill: false}
         }
     };
-    var data = [[0,0], [0,1], [1,0], [1,1]];
 
-    $.plot($("#diet_placeholder"), data, options);
+    //var data = [[0,0], [0,1], [1,0], [1,1]];
+    var data = [["January", 7500], ["February", 6800], ["March", 7800]];
+
+    if (type === "diet") {
+        $.plot($("#diet_placeholder"), data, options);
+    } else if (type === "exercise") {
+        $.plot($("#exercise_placeholder"), data, options);
+    }
 }
 
-function create_diet_tables() {
+function create_tables(type) {
     var json = [];
     var months = [];
     var calories = [];
@@ -71,7 +77,7 @@ function create_diet_tables() {
         });
     });
 
-    load_diet_tables(json);
+    load_tables(type, json);
 }
 
 function load_diet_data(username) {
@@ -99,7 +105,7 @@ function load_diet_data(username) {
         },
         complete: function(xhr, status) {
             display_diet_entries();
-            create_diet_tables();
+            create_tables("diet");
         }
     });
 }
@@ -129,57 +135,13 @@ function load_exercise_data(username) {
         },
         complete: function(xhr, status) {
             display_exercise_entries();
-        }
-    });
-}
-
-// load diet summary information for use in left sidebar
-function load_diet_summary(username) {
-    $.ajax({
-        type: "POST",
-        url: "php/user.php?method=get_user_diet_summary",
-        data: {username: username},
-        success: function(data, status, xhr) {
-            try {
-                data = $.parseJSON(data);
-            } catch (e) {
-                data = {"error": true, "response": data};
-            }
-
-            if (data.error === true) {
-                console.log(data.response);
-            } else {
-                var diet_box = $("#summary_box #diet_summary");
-                var exercise_box = $("#summary_box #exercise_summary");
-                var all = $.parseJSON(data.response);
-                var diet_info = $.parseJSON(all.diet);
-                var exercise_info = $.parseJSON(all.exercise);
-                var diet_to_go = diet_info.monthly_quota - diet_info.monthly_total
-                var exercise_to_go = exercise_info.monthly_quota - exercise_info.monthly_total
-
-                $(".total", diet_box).html(diet_info.total + " cals");
-                $(".monthly_quota", diet_box).html(diet_info.monthly_quota + " cals");
-                $(".monthly_total", diet_box).html(diet_info.monthly_total + " cals");
-                $(".calories_to_quota", diet_box).html(diet_to_go + " cals");
-
-                $(".total", exercise_box).html(exercise_info.total + " cals");
-                $(".monthly_quota", exercise_box).html(exercise_info.monthly_quota + " cals");
-                $(".monthly_total", exercise_box).html(exercise_info.monthly_total + " cals");
-                $(".calories_to_quota", exercise_box).html(exercise_to_go + " cals");
-            }
-        },
-        error: function(xhr, status, errorThrown) {
-            console.log(errorThrown);
-        },
-        complete: function(xhr, status) {
+            create_tables("exercise");
         }
     });
 }
 
 $(document).ready(function() {
     if (USERNAME !== "") {
-        load_diet_summary(USERNAME);
-
         load_diet_data(USERNAME);
         load_exercise_data(USERNAME);
     }
