@@ -161,33 +161,7 @@ function validate_login() {
                 $(box_elem).children(".info_message").html(data.response);
             } else {
                 $(box_elem).children(".info_message").html("Logged in!");
-                window.location.href = "/";
-            }
-        },
-        error: function(xhr, status, errorThrown) {
-            console.log(errorThrown);
-        },
-        complete: function(xhr, status) {
-        }
-    });
-    return false;
-
-    $.ajax({
-        type: "POST",
-        url: "php/account.php",
-        data: $.extend({"method": "login"}, data),
-        success: function(data, status, xhr) {
-            try {
-                data = $.parseJSON(data);
-            } catch (e) {
-                data = {"error": true, "response": data};
-            }
-
-            if (data.error === true) {
-                $(box_elem).children(".info_message").html(data.response);
-            } else {
-                console.log(data);
-                $(box_elem).children(".info_message").html("Logged in!");
+                window.location.href = ".";
             }
         },
         error: function(xhr, status, errorThrown) {
