@@ -45,5 +45,5 @@
             </div>
         </div>
         <div class="clear"></div>
-        <div class="grid_12" style="height: 100px"><h1>&nbsp;</h1></div>
+        <div class="grid_12" style="height: 75px"><h1>&nbsp;</h1></div>
         <div class="clear"></div>
