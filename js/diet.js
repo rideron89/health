@@ -119,6 +119,7 @@ function add_diet_entry(username, password, calories, comment) {
                 $("#diet_entry_form .info_message").html(data.response);
             } else {
                 reload_diet_entries(username, password);
+                $("#diet_entry_form input[type!=button]").val("");
             }
         },
         error: function(xhr, status, errorThrown) {
