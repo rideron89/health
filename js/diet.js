@@ -1,7 +1,13 @@
 var diet_data = [];
+var total_diet_calories = 0;
+var monthly_diet_calories = 0;
 
 function delete_diet_entry(delete_elem) {
     var id = $(delete_elem).children("input[type=button]").data("id");
+
+    if (confirm("Are you sure you wish to delete this entry?") == false) {
+        return false;
+    }
 
     $.ajax({
         type: "POST",
@@ -124,6 +130,90 @@ function add_diet_entry(username, password, calories, comment) {
     });
 }
 
+function get_monthly_calories() {
+    var date = new Date();
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+
+    // ensure the 'month' is complete (01-12)
+    if (String.valueOf(month).length == 1) {
+        month = "0" + month;
+    }
+
+    $.ajax({
+        type: "POST",
+        url: "php/diet.php?method=get_monthly_calories",
+        data: {username: USERNAME, month: year + "-" + month},
+        beforeSend: function(xhr, settings) {
+            $("#diet_table .monthly_quota .calories").html("<img src=\"css/images/loader.gif\" />");
+            $("#diet_table .monthly_total .calories").html("<img src=\"css/images/loader.gif\" />");
+        },
+        success: function(data, status, xhr) {
+            try {
+                data = $.parseJSON(data);
+            } catch (e) {
+                data = {"error": true, "response": data};
+            }
+
+            if (data.error === true) {
+                console.log(data.response);
+                $("#diet_table .monthly_quota .calories").html("-");
+                $("#diet_table .monthly_total .calories").html("-");
+                $("#diet_table .calories_togo .calories").html("-");
+            } else {
+                var quota = data.response.quota;
+                var total = data.response.total;
+
+                monthly_diet_calories = data.response;
+
+                $("#diet_table .monthly_quota .calories").html(quota);
+                $("#diet_table .monthly_total .calories").html(total);
+                $("#diet_table .calories_togo .calories").html(quota - total);
+            }
+        },
+        error: function(xhr, status, errorThrown) {
+            console.log(errorThrown);
+            $("#diet_table .monthly_quota .calories").html("-");
+            $("#diet_table .monthly_total .calories").html("-");
+            $("#diet_table .calories_togo .calories").html("-");
+        },
+        complete: function(xhr, status) {
+        }
+    });
+}
+
+function get_total_calories() {
+    $.ajax({
+        type: "POST",
+        url: "php/diet.php?method=get_total_calories",
+        data: {username: USERNAME},
+        beforeSend: function(xhr, settings) {
+            $("#total_calories h3").html("<img src=\"css/images/loader.gif\" />");
+        },
+        success: function(data, status, xhr) {
+            try {
+                data = $.parseJSON(data);
+            } catch (e) {
+                data = {"error": true, "response": data};
+            }
+
+            if (data.error === true) {
+                console.log(data.response);
+                $("#total_calories h3").html("-");
+            } else {
+                total_diet_calories = data.response;
+                $("#total_calories h3").html(data.response);
+            }
+        },
+        error: function(xhr, status, errorThrown) {
+            console.log(errorThrown);
+            $("#total_calories h3").html("-");
+        },
+        complete: function(xhr, status) {
+        }
+    });
+}
+
 function validate_diet_entry_form(username, password) {
     var calories = 0;
     var comment = "";
@@ -154,6 +244,8 @@ $(document).ready(function() {
             validate_diet_entry_form(USERNAME, PASSWORD);
         });
 
+        get_total_calories();
+        get_monthly_calories();
         reload_diet_entries(USERNAME, PASSWORD);
     }
 });

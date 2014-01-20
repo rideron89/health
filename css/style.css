@@ -379,6 +379,52 @@ input.error {
 /*** End Login Page ***/
 
 /*** Diet Page ***/
+#total_calories {
+    padding-bottom: 1.5em;
+    text-align: center;
+}
+
+#total_calories h3 {
+    display: inline;
+    color: #8DBA5C;
+}
+
+#total_calories sub {
+    color: #777;
+}
+
+#diet_table {
+    width: 100%;
+    font-size: 12pt;
+    border-collapse: separate;
+    border-spacing: 0.0em 0.7em;
+    border-bottom: 1px solid #CCC;
+    margin-bottom: 2.7em;
+    padding-bottom: 2.0em;
+}
+
+#diet_table .calories {
+    width: 68px;
+    text-align: right;
+}
+
+#diet_table .calories_label {
+    width: 68px;
+    text-align: right;
+    color: #777;
+    text-shadow: 0 1px 0 #EEE;
+}
+
+#diet_table .monthly_total .sign,
+#diet_table .monthly_total .calories {
+    border-bottom: 1px solid #AAA;
+}
+
+#diet_table .calories_togo .calories {
+    font-weight: bold;
+    text-shadow: 0 1px 0 #EEE;
+}
+
 #diet_entry_form {
     border: 1px solid #ccc;
     padding: 12px;
