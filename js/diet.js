@@ -240,6 +240,12 @@ function validate_diet_entry_form(username, password) {
 
 $(document).ready(function() {
     if (USERNAME !== "") {
+        $("#diet_entry_form input[type!=button]").keypress(function(e) {
+            if (e.keyCode === 13) {
+                validate_diet_entry_form(USERNAME, PASSWORD);
+            }
+        });
+
         $("#diet_entry_form .submit").click(function(e) {
             e.preventDefault();
             validate_diet_entry_form(USERNAME, PASSWORD);
