@@ -7,7 +7,7 @@ function get_user_diet_summary($username) {
         "total" => 0, "monthly_quota" => 0, "monthly_total" => 0);
 
     try {
-        $dbh = new PDO("mysql:dbname=health;host=127.0.0.1", "root", "bob");
+        $dbh = new PDO("mysql:dbname=health;host=192.168.1.23", "root", "bob");
 
         // retrieve user id and calorie intake quota
         $sql = "SELECT id,monthly_diet_quota,monthly_exercise_quota FROM user WHERE username=?";
@@ -65,7 +65,7 @@ function get_diet_entries($username, $limit = 0) {
                             . filter_var($limit, FILTER_SANITIZE_NUMBER_INT, array("default" => 5));
         }
 
-        $dbh = new PDO("mysql:dbname=health;host=127.0.0.1", "root", "bob");
+        $dbh = new PDO("mysql:dbname=health;host=192.168.1.23", "root", "bob");
 
         // retrive user id
         $sql = "SELECT id FROM user WHERE username=?";
@@ -99,7 +99,7 @@ function get_exercise_entries($username, $limit = 0) {
                             . filter_var($limit, FILTER_SANITIZE_NUMBER_INT, array("default" => 5));
         }
 
-        $dbh = new PDO("mysql:dbname=health;host=127.0.0.1", "root", "bob");
+        $dbh = new PDO("mysql:dbname=health;host=192.168.1.23", "root", "bob");
 
         // retrive user id
         $sql = "SELECT id FROM user WHERE username=?";

@@ -1,0 +1,342 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"b",
+				"box-shadow"
+			],
+			[
+				"for",
+				"foreach	foreach …"
+			],
+			[
+				"prev",
+				"previousText"
+			],
+			[
+				"initial",
+				"initial_y"
+			],
+			[
+				"initia",
+				"initial_x"
+			],
+			[
+				"list-style",
+				"list-style-position"
+			],
+			[
+				"jala",
+				"jalapeno"
+			],
+			[
+				"jalapen",
+				"jalapenoSpicy"
+			],
+			[
+				"Data",
+				"Data"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "php/account.php",
+			"settings":
+			{
+				"buffer_size": 4349,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/G/xampp/htdocs/health/design/database_design.db",
+		"/G/xampp/htdocs/health/css/style.css",
+		"/G/xampp/htdocs/health/login.php",
+		"/G/xampp/htdocs/health/js/main.js",
+		"/G/xampp/htdocs/health/php/account.php",
+		"/G/Downloads/essay.txt",
+		"/C/Users/Ron/Documents/Out of the Park Developments/OOTP Baseball 14/saved_games/saved_games.dat",
+		"/G/xampp/readme_en.txt",
+		"/G/xampp/mysql/data/mysql_error.log",
+		"/G/xampp/mysql/bin/my.ini",
+		"/G/xampp/apache/logs/error.log",
+		"/G/xampp/htdocs/health/index.html",
+		"/G/xampp/htdocs/health/templates/footer.php",
+		"/G/xampp/htdocs/health/templates/header.php",
+		"/G/Sublime Text 3/Data/Packages/Default/Preferences.sublime-settings",
+		"/G/xampp/htdocs/health/README.md",
+		"/G/xampp/htdocs/tenable/index.php",
+		"/G/xampp/htdocs/upload.php",
+		"/G/xampp/htdocs/npse/index.html",
+		"/G/Downloads/mongodb-win32-x86_64-2008plus-2.4.8/README",
+		"/G/xampp/htdocs/video/index.php",
+		"/G/xampp/htdocs/video/index.html",
+		"/G/xampp/htdocs/filtrexcorp/themes/filtrexcorp/layout.css",
+		"/G/xampp/htdocs/filtrexcorp/themes/filtrexcorp/filtrexcorp.info",
+		"/G/xampp/htdocs/filtrexcorp/themes/filtrexcorp/templates/block--block--7.tpl.php",
+		"/G/xampp/htdocs/filtrexcorp/themes/filtrexcorp/templates/block--block--6.tpl.php",
+		"/G/xampp/htdocs/filtrexcorp/themes/filtrexcorp/templates/block--block--5.tpl.php",
+		"/G/xampp/htdocs/filtrexcorp/themes/filtrexcorp/templates/block--block--4.tpl.php",
+		"/G/xampp/htdocs/filtrexcorp/themes/filtrexcorp/templates/block--block--3.tpl.php",
+		"/G/xampp/htdocs/filtrexcorp/themes/filtrexcorp/templates/block--block--2.tpl.php",
+		"/G/xampp/htdocs/filtrexcorp/themes/filtrexcorp/templates/block--block--1.tpl.php",
+		"/G/xampp/htdocs/filtrexcorp/themes/filtrexcorp/templates/block--block--8.tpl.php",
+		"/C/Users/Ron/AppData/Local/Temp/fz3temp-1/block--block--4.tpl.php",
+		"/G/xampp/htdocs/filtrexcorp/themes/bartik/bartik.info",
+		"/G/xampp/htdocs/filtrexcorp/themes/filtrexcorp/README.txt",
+		"/G/Downloads/drupal-7.23/UPGRADE.txt",
+		"/G/xampp/htdocs/gravity/documentation.txt",
+		"/G/xampp/htdocs/gravity/index.html",
+		"/G/xampp/htdocs/filtrexcorp/themes/filtrexcorp/layout_old.css",
+		"/G/xampp/htdocs/filtrexcorp/themes/filtrexcorp/stark.info",
+		"/G/xampp/htdocs/Scatterplot/pi_neph.sql",
+		"/G/Downloads/drupal-7.22/INSTALL.txt",
+		"/G/xampp/htdocs/Scatterplot/php/mysql.php",
+		"/G/xampp/htdocs/pi_neph/database_newer.sql",
+		"/G/Downloads/drupal-7.22/INSTALL.mysql.txt",
+		"/G/xampp/htdocs/npse/main.php",
+		"/G/xampp/htdocs/npse/main.js",
+		"/G/Downloads/index.html",
+		"/G/xampp/htdocs/npse/database_design.db",
+		"/G/xampp/htdocs/index.html",
+		"/G/xampp/htdocs/index.php",
+		"/F/XAMPP/htdocs/health/js/main.js",
+		"/F/Sublime Text 3/Data/Packages/User/Preferences.sublime-settings",
+		"/F/XAMPP/htdocs/health/database_design.db",
+		"/F/XAMPP/htdocs/health/index.html",
+		"/G/Downloads/960gs/README.txt",
+		"/G/Downloads/torrents/Adobe Photoshop CS6 13.0.1 Final  Multilanguage (cracked dll) [ChingLiu]/ChingLiu.Notes.nfo",
+		"/F/Sublime Text 3/Data/Packages/Default/Preferences.sublime-settings",
+		"/F/XAMPP/htdocs/fantasy_rails/utility/mysql.php",
+		"/F/XAMPP/htdocs/fantasy_rails/modules/admin.php",
+		"/F/XAMPP/htdocs/fantasy_rails/templates/header.php",
+		"/F/XAMPP/htdocs/fantasy_rails/templates/footer.php",
+		"/F/XAMPP/htdocs/fantasy_rails/modules/create_user.php",
+		"/F/XAMPP/htdocs/fantasy_rails/index.php",
+		"/F/XAMPP/htdocs/fantasy_rails/js/main.js",
+		"/F/XAMPP/htdocs/drupal/sites/default/settings.php",
+		"/F/XAMPP/htdocs/fantasy_rails/css/main.css",
+		"/F/XAMPP/apache/conf/httpd.conf",
+		"/F/XAMPP/htdocs/fantasy_rails_old/database_design.txt",
+		"/F/XAMPP/htdocs/fantasy_rails/modules/stats.php",
+		"/F/XAMPP/htdocs/fantasy_rails/css/t.css.txt",
+		"/F/XAMPP/htdocs/fantasy_rails/css/.htaccess",
+		"/F/XAMPP/apache/logs/access.log",
+		"/F/XAMPP/php/php.ini",
+		"/F/XAMPP/htdocs/fantasy_rails/templates/404.php",
+		"/F/XAMPP/htdocs/fantasy_rails/stats.php",
+		"/F/XAMPP/htdocs/fantasy_rails/stats/.htaccess",
+		"/F/XAMPP/htdocs/fantasy_rails/application/models/stats_model.php",
+		"/F/XAMPP/htdocs/fantasy_rails/application/views/football/stats.php",
+		"/F/XAMPP/htdocs/fantasy_rails/application/controllers/football.php",
+		"/F/XAMPP/htdocs/fantasy_rails/application/controllers/stats.php",
+		"/F/XAMPP/htdocs/fantasy_rails/application/config/routes.php",
+		"/F/XAMPP/htdocs/fantasy_rails/application/config/database.php",
+		"/F/XAMPP/htdocs/fantasy_rails/application/views/templates/header.php",
+		"/F/XAMPP/htdocs/fantasy_rails/application/views/templates/footer.php",
+		"/F/XAMPP/htdocs/fantasy_rails/application/models/stats_models.php",
+		"/F/XAMPP/htdocs/fantasy_rails/database_design.txt",
+		"/F/XAMPP/htdocs/fantasy_rails/index.html",
+		"/F/XAMPP/mysql/README",
+		"/F/XAMPP/readme_en.txt"
+	],
+	"find":
+	{
+		"height": 26.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"error_message",
+			"parent_elem",
+			"<script type=\"text/javascript\" src=\"vendor/angular.js\"></script>\n	<script type=\"text/javascript\" src=\"js/main.js\"></script>",
+			".pdf\"",
+			"/filtrexcorp/sites/default",
+			".pdf\"",
+			"./files",
+			"/filtrexcorp/sites/default",
+			"layer1",
+			")));\n",
+			"25px",
+			"logo_main",
+			"<div>",
+			"</div>",
+			"inner_header_grid",
+			"Nut",
+			"li",
+			"component",
+			" $",
+			"AllowOverride",
+			"';\n",
+			"$fantasy_football",
+			"fantasy_football"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "php/account.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4349,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2562,
+								2562
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 972.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": ".proj.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

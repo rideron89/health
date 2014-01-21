@@ -9,7 +9,7 @@
 
     if (isset($_SESSION["username"]) && isset($_SESSION["password"])) {
         try {
-            $dbh = new PDO("mysql:dbname=health;host=127.0.0.1", "root", "bob");
+            $dbh = new PDO("mysql:dbname=health;host=192.168.1.23", "root", "bob");
             $sql = "SELECT * FROM user WHERE username=? AND password=?";
             $sth = $dbh->prepare($sql);
             $success = $sth->execute(array($_SESSION["username"], $_SESSION["password"]));

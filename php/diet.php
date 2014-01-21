@@ -2,7 +2,7 @@
 
 function get_monthly_quota($username) {
     try {
-        $dbh = new PDO("mysql:dbname=health;host=127.0.0.1", "root", "bob");
+        $dbh = new PDO("mysql:dbname=health;host=192.168.1.23", "root", "bob");
 
         // retrieve user_id from database
         $sql = "SELECT monthly_diet_quota AS quota FROM user WHERE username=?";
@@ -44,7 +44,7 @@ function get_monthly_calories($username, $month) {
             $max = $month . "-30";
         }
 
-        $dbh = new PDO("mysql:dbname=health;host=127.0.0.1", "root", "bob");
+        $dbh = new PDO("mysql:dbname=health;host=192.168.1.23", "root", "bob");
 
         // retrieve user_id from database
         $sql = "SELECT id,monthly_diet_quota AS quota FROM user WHERE username=?";
@@ -77,7 +77,7 @@ function get_monthly_calories($username, $month) {
 
 function get_total_calories($username) {
     try {
-        $dbh = new PDO("mysql:dbname=health;host=127.0.0.1", "root", "bob");
+        $dbh = new PDO("mysql:dbname=health;host=192.168.1.23", "root", "bob");
 
         // retrieve user_id from database
         $sql = "SELECT id FROM user WHERE username=?";
@@ -121,7 +121,7 @@ function add_diet_entry($username, $password, $calories, $comment) {
             $comment = "";
         }
 
-        $dbh = new PDO("mysql:dbname=health;host=127.0.0.1", "root", "bob");
+        $dbh = new PDO("mysql:dbname=health;host=192.168.1.23", "root", "bob");
 
         // retrieve user_id from database
         $sql = "SELECT id FROM user WHERE username=? AND password=?";
@@ -158,7 +158,7 @@ function delete_diet_entry($username, $password, $id) {
             return "ID must be non-negative when removing an entry";
         }
 
-        $dbh = new PDO("mysql:dbname=health;host=127.0.0.1", "root", "bob");
+        $dbh = new PDO("mysql:dbname=health;host=192.168.1.23", "root", "bob");
 
         // retrieve user_id from database
         $sql = "SELECT id FROM user WHERE username=? AND password=?";

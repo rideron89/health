@@ -2,7 +2,7 @@
 
 function check_existing_account($user, $email) {
     try {
-        $dbh = new PDO("mysql:dbname=health;host=127.0.0.1", "root", "bob");
+        $dbh = new PDO("mysql:dbname=health;host=192.168.1.23", "root", "bob");
         $sql = "SELECT username FROM user WHERE username=?";
         $sth = $dbh->prepare($sql);
         $success = $sth->execute(array($user));
@@ -43,7 +43,7 @@ function create_account($data) {
     }
 
     try {
-        $dbh = new PDO("mysql:dbname=health;host=127.0.0.1", "root", "bob");
+        $dbh = new PDO("mysql:dbname=health;host=192.168.1.23", "root", "bob");
         $sql = "INSERT INTO user (username,password,email,first_name,last_name,date_of_birth)
             VALUES (?,?,?,?,?,?)";
         $sth = $dbh->prepare($sql);
@@ -68,7 +68,7 @@ function login($data) {
     }
 
     try {
-        $dbh = new PDO("mysql:dbname=health;host=127.0.0.1", "root", "bob");
+        $dbh = new PDO("mysql:dbname=health;host=192.168.1.23", "root", "bob");
         $sql = "SELECT * FROM user WHERE username=? AND password=?";
         $sth = $dbh->prepare($sql);
         $success = $sth->execute(array($data["user"], $data["pass"]));
