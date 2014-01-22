@@ -18,7 +18,7 @@
                     <ul id="navbar">
                         <li><a href=".">Home</a></li>
                         <li><a href="diet.php">Diet</a></li>
-                        <li><a href="">Exercise</a></li>
+                        <li><a href="exercise.php">Exercise</a></li>
                         <li><a href="">Nutrition</a></li>
                         <li class="stretch"></li>
                     </ul>

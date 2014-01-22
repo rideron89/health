@@ -290,35 +290,41 @@ input[type=search]:focus {
 /*** End Content ***/
 
 /*** Diet & Exercise Entries ***/
-.diet_entry, .exercise_entry {
+.diet_entry,
+.exercise_entry {
     position: relative;
     border: 1px solid #ccc;
     padding: 10px;
     margin: 10px 0px;
 }
 
-.diet_entry:hover, .exercise_entry:hover {
+.diet_entry:hover,
+.exercise_entry:hover {
     border-color: #b0e973;
     box-shadow: 0px 0px 8px #b0e973;
 }
 
-.diet_entry .calories, .exercise_entry .calories {
+.diet_entry .calories,
+.exercise_entry .calories {
     font-size: 24px;
     font-weight: bold;
     color: #8DBA5C;
 }
 
-.diet_entry .comment, .exercise_entry .comment {
+.diet_entry .comment,
+.exercise_entry .comment {
     text-indent: 20px;
 }
 
-.diet_entry .date, .exercise_entry .date {
+.diet_entry .date,
+.exercise_entry .date {
     position: absolute;
     top: 10px;
     right: 10px;
 }
 
-.diet_entry .delete {
+.diet_entry .delete,
+.exercise_entry .delete {
     display: none;
     text-align: right;
 }
@@ -378,7 +384,7 @@ input.error {
 }
 /*** End Login Page ***/
 
-/*** Diet Page ***/
+/*** Diet & Exercise Pages ***/
 #total_calories {
     padding-bottom: 1.5em;
     text-align: center;
@@ -393,7 +399,7 @@ input.error {
     color: #777;
 }
 
-#diet_table {
+.quota_summary_table {
     width: 100%;
     font-size: 12pt;
     border-collapse: separate;
@@ -403,35 +409,35 @@ input.error {
     padding-bottom: 2.0em;
 }
 
-#diet_table .calories {
+.quota_summary_table .calories {
     width: 68px;
     text-align: right;
 }
 
-#diet_table .calories_label {
+.quota_summary_table .calories_label {
     width: 68px;
     text-align: right;
     color: #777;
     text-shadow: 0 1px 0 #EEE;
 }
 
-#diet_table .monthly_total .sign,
-#diet_table .monthly_total .calories {
+.quota_summary_table .monthly_total .sign,
+.quota_summary_table .monthly_total .calories {
     border-bottom: 1px solid #AAA;
 }
 
-#diet_table .calories_togo .calories {
+.quota_summary_table .calories_togo .calories {
     font-weight: bold;
     text-shadow: 0 1px 0 #EEE;
 }
 
-#diet_entry_form {
+.entry_form {
     border: 1px solid #ccc;
     padding: 12px;
     box-shadow: 0 0 4px #ddd;
 }
 
-#diet_entry_form label {
+.entry_form label {
     display: block;
     font-size: 14pt;
     font-weight: bold;
@@ -441,8 +447,8 @@ input.error {
     text-shadow: 0 1px 0px #fff;
 }
 
-#diet_entry_form .info_message {
+.entry_form .info_message {
     margin-top: 12px;
     text-indent: 8px;
 }
-/*** End Diet Page ***/
+/*** End Diet & Exercise Pages ***/
