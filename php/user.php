@@ -73,7 +73,7 @@ function get_diet_entries($username, $limit = 0) {
         $success = $sth->execute(array($username));
         $user_row = $sth->fetch();
 
-        $sql = "SELECT * FROM food_log WHERE user_id=? ORDER BY date_logged DESC" . $limit_filtered;
+        $sql = "SELECT * FROM food_log WHERE user_id=? ORDER BY date_logged ASC" . $limit_filtered;
         $sth = $dbh->prepare($sql);
         $success = $sth->execute(array($user_row["id"]));
         foreach ($sth->fetchAll(PDO::FETCH_ASSOC) as $row) {
@@ -107,7 +107,7 @@ function get_exercise_entries($username, $limit = 0) {
         $success = $sth->execute(array($username));
         $user_row = $sth->fetch();
 
-        $sql = "SELECT * FROM exercise_log WHERE user_id=? ORDER BY date_logged DESC" . $limit_filtered;
+        $sql = "SELECT * FROM exercise_log WHERE user_id=? ORDER BY date_logged ASC" . $limit_filtered;
         $sth = $dbh->prepare($sql);
         $success = $sth->execute(array($user_row["id"]));
         foreach ($sth->fetchAll(PDO::FETCH_ASSOC) as $row) {

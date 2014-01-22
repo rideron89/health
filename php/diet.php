@@ -134,7 +134,7 @@ function add_diet_entry($username, $password, $calories, $comment) {
         }
 
         // prepare the INSERT statement and execute it
-        $sql = "INSERT INTO food_log VALUES(NULL, ?, \"\", ?, ?, NULL)";
+        $sql = "INSERT INTO food_log VALUES(NULL, ?, ?, ?, NULL)";
         $sth = $dbh->prepare($sql);
         $success = $sth->execute(array($user_row["id"], $calories, $comment));
 

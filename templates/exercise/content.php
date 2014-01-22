@@ -39,6 +39,6 @@
                 Here is a list of your last 25 exercise entries. From this page you may hover over
                 any entry and delete if you wish.
             </label>
-            <div id="exercise_entry_list">
+            <div id="exercise_entry_list" class="entry_list">
             </div>
         </div>

@@ -74,7 +74,7 @@
 
 <?php if (isset($LOGGED_IN) && $LOGGED_IN) { ?>
     <script type="text/javascript" src="js/summary.js"></script>
-    <script type="text/javascript" src="js/exercise.js"></script>
+    <script type="text/javascript" src="js/entry.js"></script>
 <?php } ?>
 </body>
 </html>
