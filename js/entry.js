@@ -52,6 +52,14 @@ function get_total_calories() {
     });
 }
 
+/**
+ * Ask the backend for details on the logs for this current month.
+ * This method will ask for and display the user's quota and total
+ * calories logged for the month.
+ *
+ * @return {boolean} <b>false</b> if the url could not be validated,
+ * <b>null</b> otherwise.
+ */
 function get_monthly_calories() {
     var date = new Date();
     var year = date.getFullYear();
