@@ -3,6 +3,118 @@ var total_calories = 0;
 var monthly_calories = 0;
 
 /**
+ * Ask the backend for the total number of calories logged by this
+ * user, not restricted by any month or year.
+ *
+ * @return {boolean} <b>false</b> if the url could not be validated,
+ * <b>null</b> otherwise.
+ */
+function get_total_calories() {
+    var url = "";
+
+    // use the id of the summary table to determine whether we're talking diet or exercise
+    if ($(".quota_summary_table").attr("id").indexOf("diet") !== -1) {
+        url = "php/diet.php?method=get_total_calories";
+    } else if ($(".quota_summary_table").attr("id").indexOf("exercise") !== -1) {
+        url = "php/exercise.php?method=get_total_calories";
+    } else {
+        return false;
+    }
+
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: {username: USERNAME},
+        beforeSend: function(xhr, settings) {
+            $("#total_calories h3").html("<img src=\"css/images/loader.gif\" />");
+        },
+        success: function(data, status, xhr) {
+            try {
+                data = $.parseJSON(data);
+            } catch (e) {
+                data = {"error": true, "response": data};
+            }
+
+            if (data.error === true) {
+                console.log(data.response);
+                $("#total_calories h3").html("-");
+            } else {
+                total_diet_calories = data.response;
+                $("#total_calories h3").html(data.response);
+            }
+        },
+        error: function(xhr, status, errorThrown) {
+            console.log(errorThrown);
+            $("#total_calories h3").html("-");
+        },
+        complete: function(xhr, status) {
+        }
+    });
+}
+
+function get_monthly_calories() {
+    var date = new Date();
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var url = "";
+
+    // ensure the 'month' is complete (01-12)
+    if (String.valueOf(month).length == 1) {
+        month = "0" + month;
+    }
+
+    // use the id of the summary table to determine whether we're talking diet or exercise
+    if ($(".quota_summary_table").attr("id").indexOf("diet") !== -1) {
+        url = "php/diet.php?method=get_monthly_calories";
+    } else if ($(".quota_summary_table").attr("id").indexOf("exercise") !== -1) {
+        url = "php/exercise.php?method=get_monthly_calories";
+    } else {
+        return false;
+    }
+
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: {username: USERNAME, month: year + "-" + month},
+        beforeSend: function(xhr, settings) {
+            $(".quota_summary_table .monthly_quota .calories").html("<img src=\"css/images/loader.gif\" />");
+            $(".quota_summary_table .monthly_total .calories").html("<img src=\"css/images/loader.gif\" />");
+        },
+        success: function(data, status, xhr) {
+            try {
+                data = $.parseJSON(data);
+            } catch (e) {
+                data = {"error": true, "response": data};
+            }
+
+            if (data.error === true) {
+                console.log(data.response);
+                $(".quota_summary_table .monthly_quota .calories").html("-");
+                $(".quota_summary_table .monthly_total .calories").html("-");
+                $(".quota_summary_table .calories_togo .calories").html("-");
+            } else {
+                var quota = data.response.quota;
+                var total = data.response.total;
+
+                monthly_diet_calories = data.response;
+
+                $(".quota_summary_table .monthly_quota .calories").html(quota);
+                $(".quota_summary_table .monthly_total .calories").html(total);
+                $(".quota_summary_table .calories_togo .calories").html(quota - total);
+            }
+        },
+        error: function(xhr, status, errorThrown) {
+            console.log(errorThrown);
+            $(".quota_summary_table .monthly_quota .calories").html("-");
+            $(".quota_summary_table .monthly_total .calories").html("-");
+            $(".quota_summary_table .calories_togo .calories").html("-");
+        },
+        complete: function(xhr, status) {
+        }
+    });
+}
+
+/**
  * Sends a request to the backend to delete an entry. If that entry
  * was successfully deleted, remove the entry div from the entry list.
  * Make sure to prompt the user before deleting.
@@ -83,6 +195,7 @@ function add_entry_div(input) {
             + "<input type=\"button\" data-id=\"" + input.id + "\" value=\"Delete Entry\" />"
             + "</div>";
 
+    // use the id of the entry form to determine whether we're talking diet or exercise
     if ($(content_div).attr("id").indexOf("diet") !== -1) {
         $(entry_div).html(content).addClass("diet_entry").addClass("entry");
     } else if ($(content_div).attr("id").indexOf("exercise") !== -1) {
@@ -268,6 +381,9 @@ $(document).ready(function() {
                 add_entry(input);
             }
         });
+
+        get_total_calories();
+        get_monthly_calories();
 
         // this will load the entry data and add the necessary entry divs
         load_entry_data();
